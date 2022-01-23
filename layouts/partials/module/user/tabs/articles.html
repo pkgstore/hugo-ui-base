@@ -1,0 +1,13 @@
+<div class="author-articles">
+  <div>
+    <div class="node-body">
+      <ul>
+          {{ range (.Data.Pages) }}
+            <li>
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+          {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>

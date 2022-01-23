@@ -1,0 +1,15 @@
+<article class="node-{{ .Type }}">
+  <header>
+    <div class="node-cover mb-3">
+        {{ (partial "module/node/cover/image" (dict "context" . "view" "lg")) }}
+    </div>
+    <div class="node-title">
+      <h4 class="h5">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h4>
+    </div>
+  </header>
+  <div class="node-body">
+      {{ (partial "module/node/summary" .) }}
+  </div>
+</article>

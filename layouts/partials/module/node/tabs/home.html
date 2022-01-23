@@ -1,0 +1,15 @@
+<div class="node-body">
+
+    {{ if (in .Params.categories "InDev") }}
+        {{ (partial "function/alert" (dict "type" "warning" "icon" "fas fa-edit" "msg" "alert.in_dev")) }}
+    {{ end }}
+
+    {{ if (in .Params.categories "Opinion") }}
+        {{ (partial "function/alert" (dict "type" "warning" "icon" "fas fa-user-graduate" "msg" "alert.opinion")) }}
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ (partial "module/node/sources" .) }}
+
+</div>

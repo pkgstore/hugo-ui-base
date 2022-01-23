@@ -1,0 +1,29 @@
+{{ $tags := 0 }}
+{{ if (isset .Params "tags") }}
+    {{ if (not (eq (index (.Param "tags") 0) "")) }}
+        {{ $tags = 1 }}
+    {{ end }}
+{{ end }}
+
+<div class="node-tags">
+  <section>
+    <h4>{{ i18n "tags" }}</h4>
+    <div class="node-body">
+        {{ if ($tags) }}
+          <ul class="list-inline">
+              {{ range (.GetTerms "tags") }}
+                <li class="list-inline-item">
+                  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+                </li>
+              {{ end }}
+          </ul>
+        {{ else }}
+            {{ (partial "function/alert" (dict
+            "type" "warning"
+            "icon" "fas fa-tags"
+            "msg" "alert.tags_not_found"
+            )) }}
+        {{ end }}
+    </div>
+  </section>
+</div>

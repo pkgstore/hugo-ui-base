@@ -1,0 +1,24 @@
+{{ $width := ($.Site.Data.cfg.node.storage.image.cover_size | default "400") }}
+{{ $height := ($.Site.Data.cfg.node.storage.image.cover_size | default "400") }}
+{{ $crop := ($.Site.Data.cfg.node.storage.image.cover_crop | default "entropy") }}
+
+{{ with (.Page.Resources.Match "storage/*") }}
+
+  <div class="node-body ext-gallery">
+    <div class="row row-cols-auto g-3" data-ext-fn="ext-gallery">
+        {{ range . }}
+            {{ if (in .MediaType.MainType "image") }}
+                {{ $src := . }}{{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
+                <div class="col">
+                  <a class="d-inline-block" href="{{ $src.RelPermalink }}" data-title="{{ (.Name | path.Base) }}" data-fancybox="gallery-storage-images">
+                    <picture>
+                      <img class="img-thumbnail" src="{{ $thumb.RelPermalink }}" width="{{ $width }}" height="{{ $height }}" alt="{{ (.Name | path.Base) }}"/>
+                    </picture>
+                  </a>
+                </div>
+            {{ end }}
+        {{ end }}
+    </div>
+  </div>
+
+{{ end }}

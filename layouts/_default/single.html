@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+  <div class="section py-3 py-md-5">
+    <div class="container">
+
+        {{ (partial "breadcrumb" .) }}
+
+      <article>
+        <h1 class="text-center">{{ (.Title) }}</h1>
+          {{ (partial "module/node/tabs/_tabs" .) }}
+      </article>
+    </div>
+  </div>
+
+{{ end }}

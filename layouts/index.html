@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+    {{ $cfg := ($.Site.Data.cfg) }}
+
+    {{ if ($cfg.index.news.on) }}
+        {{ (partial "module/index/news" .) }}
+    {{ end }}
+
+    {{ if ($cfg.index.posts.on) }}
+        {{ (partial "module/index/posts" .) }}
+    {{ end }}
+
+{{ end }}

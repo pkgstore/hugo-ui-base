@@ -1,0 +1,119 @@
+{{ $id := (printf "node-tabs-%s" (.File.UniqueID | default "")) }}
+
+{{ $storage := 0 }}
+{{ with (.Page.Resources.Match "storage/*") }}{{ $storage = 1 }}{{ end }}
+
+<ul id="{{ $id }}" class="nav nav-tabs mt-4 mb-3" data-ext-fn="ext-node-tabs" role="tablist">
+
+  <li class="nav-item" role="presentation">
+    <button title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" data-bs-target="#node-home" type="button" role="tab" aria-controls="node-home" aria-selected="true">
+      <i class="fas fa-home fa-fw"></i>
+    </button>
+  </li>
+
+    {{ if ($.Site.Data.cfg.node.info.on) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" data-bs-target="#node-info" type="button" role="tab" aria-controls="node-info" aria-selected="false">
+          <i class="fas fa-info fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.storage.on) ($storage)) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" data-bs-target="#node-storage" type="button" role="tab" aria-controls="node-storage" aria-selected="false">
+          <i class="fas fa-hdd fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.comments.on) (.Params.comments)) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" data-bs-target="#node-comments" type="button" role="tab" aria-controls="node-comments" aria-selected="false">
+          <i class="fas fa-comments fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.feedback.on) (.Params.feedback)) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "feedback" }}' class="nav-link" id="node-feedback-tab" data-bs-toggle="tab" data-bs-target="#node-feedback" type="button" role="tab" aria-controls="node-feedback" aria-selected="false">
+          <i class="fas fa-comment-dots fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if (in .Type "authors") }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "articles" }}' class="nav-link" id="node-articles-tab" data-bs-toggle="tab" data-bs-target="#node-articles" type="button" role="tab" aria-controls="node-articles" aria-selected="false">
+          <i class="fas fa-book fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if (.IsTranslated) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ i18n "languages" }}' class="nav-link" id="node-lang-tab" data-bs-toggle="tab" data-bs-target="#node-lang" type="button" role="tab" aria-controls="node-lang" aria-selected="false">
+          <i class="fas fa-language fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+    {{ if ($.Site.Data.cfg.node.share.on) }}
+      <li class="nav-item ms-auto" role="presentation">
+        <button title='{{ i18n "share" }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" data-bs-target="#node-share" type="button" role="tab" aria-controls="node-share" aria-selected="false">
+          <i class="fas fa-share fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
+</ul>
+<div class="tab-content">
+
+  <div class="tab-pane show active" id="node-home" role="tabpanel" aria-labelledby="node-home-tab">
+      {{ (partial "module/node/tabs/home" .) }}
+  </div>
+
+    {{ if ($.Site.Data.cfg.node.info.on) }}
+      <div class="tab-pane" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
+          {{ (partial "module/node/tabs/info" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.storage.on) ($storage)) }}
+      <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
+          {{ (partial "module/node/tabs/storage/_tabs" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.comments.on) (.Params.comments)) }}
+      <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
+          {{ (partial "module/node/tabs/comments/_tabs" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (and ($.Site.Data.cfg.node.feedback.on) (.Params.feedback)) }}
+      <div class="tab-pane" id="node-feedback" role="tabpanel" aria-labelledby="node-feedback-tab">
+          {{ (partial "module/node/tabs/feedback" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (in .Type "authors") }}
+      <div class="tab-pane" id="node-articles" role="tabpanel" aria-labelledby="node-articles-tab">
+          {{ (partial "module/user/tabs/articles" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (.IsTranslated) }}
+      <div class="tab-pane" id="node-lang" role="tabpanel" aria-labelledby="node-lang-tab">
+          {{ (partial "module/node/tabs/languages" .) }}
+      </div>
+    {{ end }}
+
+    {{ if ($.Site.Data.cfg.node.share.on) }}
+      <div class="tab-pane" id="node-share" role="tabpanel" aria-labelledby="node-share-tab">
+          {{ (partial "module/node/tabs/share" .) }}
+      </div>
+    {{ end }}
+
+</div>

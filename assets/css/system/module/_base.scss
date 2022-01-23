@@ -1,0 +1,85 @@
+$color-00: #ffffff;
+$color-01: #f8f9fa;
+
+html {
+  scroll-padding-top: 1rem;
+}
+
+body {
+  @include font-base();
+  padding-top: 4rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  // Image lazy load placeholder.
+  .node-cover {
+    img {
+      background: #f8f9fa url('/img/placeholder-img.min.svg') 50% no-repeat;
+      background-size: contain;
+    }
+  }
+
+  // User avatar position.
+  &.type-authors {
+    article {
+      header {
+        .node-cover {
+          position: relative;
+
+          .cover-avatar {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            z-index: 100;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  > header {
+    .navbar {
+      @include font-cond();
+
+      // HeadRoom JS.
+      &.headroom {
+        will-change: transform;
+        transition: transform 200ms linear;
+
+        &--pinned {
+          transform: translateY(0%);
+        }
+
+        &--unpinned {
+          transform: translateY(-100%);
+        }
+      }
+
+      &-brand {
+        @include font-brand();
+      }
+    }
+  }
+}
+
+body {
+  > footer {
+    > .section {
+      &:nth-child(even) {
+        background-color: $color-01;
+      }
+
+      &:nth-child(odd) {
+        background-color: $color-01;
+      }
+    }
+
+    .fa-heart {
+      color: #fe6e3a;
+    }
+  }
+}
