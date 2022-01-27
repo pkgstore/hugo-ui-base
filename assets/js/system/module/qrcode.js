@@ -19,8 +19,6 @@ function _qrcode($selector, $text, $size = 128) {
     text: $text,
     width: $size,
     height: $size,
-    backgroundImage: '/img/icon.svg',
-    backgroundImageAlpha: 0.3,
     drawer: 'svg'
   }
 
