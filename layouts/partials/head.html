@@ -6,11 +6,11 @@
 {{ with (.Description) }}{{ $description = . }}{{ end }}
 
 {{ $emoji := ($.Site.Data.ui.meta.title.emoji) }}
-{{ with $emoji }}{{ $emoji = printf "%s " $emoji }}{{ end }}
+{{ with ($emoji) }}{{ $emoji = printf "%s " ($emoji) }}{{ end }}
 
-<title>{{ $emoji }}{{ if (ne .Title $.Site.Title) }}{{ .Title }} / {{ end }}{{ $.Site.Title }}</title>
-<meta name="title" content="{{ if (ne .Title $.Site.Title) }}{{ .Title }} / {{ end }}{{ $.Site.Title }}"/>
-<meta name="description" content="{{ (($description | plainify) | chomp) }}"/>
+<title>{{ ($emoji) }}{{ if (ne (.Title) ($.Site.Title)) }}{{ (.Title) }} / {{ end }}{{ ($.Site.Title) }}</title>
+<meta name="title" content="{{ if (ne (.Title) ($.Site.Title)) }}{{ (.Title) }} / {{ end }}{{ ($.Site.Title) }}"/>
+<meta name="description" content="{{ ((($description) | plainify) | chomp) }}"/>
 
 <!--[ dns-prefetch ]-->
 {{ $dns_prefetch := ($.Site.Data.ui.network.dns_prefetch) }}
@@ -47,33 +47,29 @@
 {{ end }}
 <!--[ / pre-load-js ]-->
 
-<meta name="application-name" content="{{ $.Site.Title }}"/>
+<meta name="application-name" content="{{ ($.Site.Title) }}"/>
 
 <!--[ canonical ]-->
-<link rel="canonical" href="{{ .Permalink }}"/>
+<link rel="canonical" href="{{ (.Permalink) }}"/>
 <!--[ / canonical ]-->
 
 <!--[ languages ]-->
 {{ if (.IsTranslated) }}
-
     {{ range (.Translations) }}
-      <link rel="alternate" href="{{ .Permalink }}" hreflang="{{ .Lang }}"/>
+      <link rel="alternate" href="{{ (.Permalink) }}" hreflang="{{ (.Lang) }}"/>
     {{ end }}
-
 {{ else }}
-
     {{ range (.Site.Languages) }}
-        {{ if (ne $.Site.Language.Lang .Lang) }}
-          <link rel="alternate" href="{{ (.Lang | absURL) }}" hreflang="{{ .Lang }}"/>
+        {{ if (ne ($.Site.Language.Lang) (.Lang)) }}
+          <link rel="alternate" href="{{ ((.Lang) | absURL) }}" hreflang="{{ (.Lang) }}"/>
         {{ end }}
     {{ end }}
-
 {{ end }}
 <!--[ / languages ]-->
 
 <!--[ output-formats ]-->
 {{ range (.AlternativeOutputFormats) }}
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ (.Permalink | safeURL) }}" title="{{ $.Site.Title }}"/>
+  <link rel="{{ (.Rel) }}" type="{{ (.MediaType.Type) }}" href="{{ ((.Permalink) | safeURL) }}" title="{{ ($.Site.Title) }}"/>
 {{ end }}
 <!--[ / output-formats ]-->
 

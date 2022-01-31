@@ -7,13 +7,13 @@
 
 <div class="node-categories">
   <section>
-    <h4>{{ i18n "categories" }}</h4>
+    <h4>{{ (i18n "categories") }}</h4>
     <div class="node-body">
         {{ if ($categories) }}
           <ul class="list-inline">
               {{ range (.GetTerms "categories") }}
                 <li class="list-inline-item">
-                  <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                  <a href="{{ (.Permalink) }}">{{ (.LinkTitle) }}</a>
                 </li>
               {{ end }}
           </ul>

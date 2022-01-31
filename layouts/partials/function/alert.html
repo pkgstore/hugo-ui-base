@@ -4,4 +4,4 @@
 {{ $msg := ((.msg) | default "") }}
 
 {{ $alert := ((printf "<div class='alert alert-%s node-body d-flex align-items-center' id='%s' role='alert'><div class='flex-shrink-0'><i class='%s fa-fw fa-2x'></i></div><div class='flex-grow-1 ms-3'><p class='mb-0'>%s</p></div></div>" ($type) ($id) ($icon) (i18n $msg)) | safeHTML) }}
-{{ return $alert }}
+{{ return ($alert) }}

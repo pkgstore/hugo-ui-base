@@ -11,11 +11,15 @@
               {{ (partial "module/node/cover/image" (dict "context" . "view" "lg")) }}
           </div>
           <div class="node-title">
-            <h1 class="h2 text-center">{{ .Title }}</h1>
+            <h1 class="h2 text-center">{{ (.Title) }}</h1>
           </div>
         </header>
-        <footer>{{ (partial "module/node/authors" .) }}</footer>
+        <footer>
+            {{ (partial "module/node/authors" .) }}
+        </footer>
+
           {{ (partial "module/node/tabs/_tabs" .) }}
+
       </article>
     </div>
   </div>

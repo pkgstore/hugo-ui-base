@@ -1,18 +1,18 @@
-{{ $id := (printf "vk-comments-%s" (.File.UniqueID | default "")) }}
-{{ $token := ($.Site.Params.api.vk.app_id | default "") }}
+{{ $id := (printf "vk-comments-%s" ((.File.UniqueID) | default "")) }}
+{{ $token := (($.Site.Params.api.vk.app_id) | default "") }}
 
-<div id="{{ $id }}"></div>
+<div id="{{ ($id) }}"></div>
 <script>
   function ext_vk_comments() {
     VK.init({
-      apiId: '{{ $token }}',
+      apiId: '{{ ($token) }}',
       onlyWidgets: true
     });
-    VK.Widgets.Comments('{{ $id }}',
+    VK.Widgets.Comments('{{ ($id) }}',
       {
-        pageUrl: '{{ .Permalink }}'
+        pageUrl: '{{ (.Permalink) }}'
       },
-      '{{ .Params.uuid }}'
+      '{{ (.Params.uuid) }}'
     );
   }
 </script>

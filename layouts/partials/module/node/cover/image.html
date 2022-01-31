@@ -1,17 +1,17 @@
-{{ $x := (.context | default .) }}
-{{ $view := (.view | default "md") }}
+{{ $x := ((.context) | default .) }}
+{{ $view := ((.view) | default "md") }}
 {{ $cfg := ($x.Site.Data.cfg.view.node.image) }}
 
-{{ $id := (printf "node-cover-%s" ($x.File.UniqueID | default "")) }}
+{{ $id := (printf "node-cover-%s" (($x.File.UniqueID) | default "")) }}
 {{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
-{{ $img_ext := ($x.Params.images | default (slice $cfg.default)) }}
+{{ $img_ext := (($x.Params.images) | default (slice ($cfg.default))) }}
 
 <!--[ view: lg ]-->
-{{ if (eq $view "lg") }}
+{{ if (eq ($view) ("lg")) }}
 
-    {{ $width := (.width | default $cfg.lg.width) }}
-    {{ $height := (.height | default $cfg.lg.height) }}
-    {{ $crop := ($x.Params.cover.image.crop | default $cfg.lg.crop) }}
+    {{ $width := ((.width) | default ($cfg.lg.width)) }}
+    {{ $height := ((.height) | default ($cfg.lg.height)) }}
+    {{ $crop := (($x.Params.cover.image.crop) | default ($cfg.lg.crop)) }}
     {{ $fit := "crop" }}
 
     {{ $srcset := (slice
@@ -22,34 +22,34 @@
     (dict "width" "1600" "height" "900")
     ) }}
 
-    <div id="{{ $id }}" class="cover-image cover-node carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="{{ ($id) }}" class="cover-image cover-node carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner rounded">
           {{ with ($img_int) }}
 
             <!--[ image: internal ]-->
-            {{ if ((len $img_int) | lt 1) }}
+            {{ if ((len ($img_int)) | lt 1) }}
               <div class="carousel-indicators">
-                  {{ range $key, $src := $img_int }}
-                    <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+                  {{ range $key, $src := ($img_int) }}
+                    <button type="button" data-bs-target="#{{ ($id) }}" data-bs-slide-to="{{ ($key) }}" class="{{ if (eq ($key) (0)) }}active{{ end }}" aria-label="Slide {{ ($key) }}"></button>
                   {{ end }}
               </div>
             {{ end }}
 
-            {{ range $key, $src := $img_int }}
-                {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
-                {{ $filename := ($src.Name | path.Base) }}
-                <div class='carousel-item {{ if (in $filename ".00.") }}active{{ end }}'>
+            {{ range $key, $src := ($img_int) }}
+                {{ $thumb := ($src.Fill (printf "%sx%s %s" ($width) ($height) ($crop))) }}
+                {{ $filename := (($src.Name) | path.Base) }}
+                <div class='carousel-item {{ if (in ($filename) (".00.")) }}active{{ end }}'>
                   <picture>
                     <source srcset='
-                  {{ range $i, $srcset := $srcset }}
-                  {{ $thumb := ($src.Fill (printf "%sx%s %s" .width .height $crop)) }}
+                  {{ range $i, $srcset := ($srcset) }}
+                  {{ $thumb := ($src.Fill (printf "%sx%s %s" (.width) (.height) ($crop))) }}
                   {{ if $i }},{{ end }}
-                  {{ $thumb.RelPermalink }} {{ .width }}w
+                  {{ ($thumb.RelPermalink) }} {{ (.width) }}w
                   {{ end }}
                   ' sizes="(min-width: 576px) 100vw"/>
                     <img class="d-block w-100 h-100"
-                         src="{{ $thumb.RelPermalink }}"
-                         width="{{ $width }}" height="{{ $height }}"
+                         src="{{ ($thumb.RelPermalink) }}"
+                         width="{{ ($width) }}" height="{{ ($height) }}"
                          alt="" loading="lazy"/>
                   </picture>
                 </div>
@@ -59,35 +59,35 @@
           {{ else }}
 
             <!--[ image: external ]-->
-            {{ if ((len $img_ext) | lt 1) }}
+            {{ if ((len ($img_ext)) | lt 1) }}
               <div class="carousel-indicators">
-                  {{ range $key, $src := $img_ext }}
-                    <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+                  {{ range $key, $src := ($img_ext) }}
+                    <button type="button" data-bs-target="#{{ ($id) }}" data-bs-slide-to="{{ ($key) }}" class="{{ if (eq ($key) (0)) }}active{{ end }}" aria-label="Slide {{ ($key) }}"></button>
                   {{ end }}
               </div>
             {{ end }}
 
-            {{ range $key, $src := $img_ext }}
-              <div class="carousel-item {{ if (eq $key 0) }}active{{ end }}">
-                  {{ $url := urls.Parse $src }}
-                  {{ if (eq $url.Host "images.unsplash.com") }}
+            {{ range $key, $src := ($img_ext) }}
+              <div class="carousel-item {{ if (eq ($key) (0)) }}active{{ end }}">
+                  {{ $url := (urls.Parse ($src)) }}
+                  {{ if (eq ($url.Host) ("images.unsplash.com")) }}
                     <picture>
                       <source srcset='
-                  {{ range $i, $e := $srcset }}
-                  {{ if $i }},{{ end }}
-                  {{ $src }}?crop={{ $crop }}&amp;w={{ .width }}&amp;h={{ .height }}&amp;fit={{ $fit }}&amp;auto=format {{ .width }}w
+                  {{ range $i, $e := ($srcset) }}
+                  {{ if ($i) }},{{ end }}
+                  {{ ($src) }}?crop={{ ($crop) }}&amp;w={{ (.width) }}&amp;h={{ (.height) }}&amp;fit={{ ($fit) }}&amp;auto=format {{ (.width) }}w
                   {{ end }}
                   ' sizes="(min-width: 576px) 100vw"/>
                       <img class="d-block w-100 h-100"
-                           src="{{ $src }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format"
-                           width="{{ $width }}" height="{{ $height }}"
+                           src="{{ ($src) }}?crop={{ ($crop) }}&amp;w={{ ($width) }}&amp;h={{ ($height) }}&amp;fit={{ ($fit) }}&amp;auto=format"
+                           width="{{ ($width) }}" height="{{ ($height) }}"
                            alt="" loading="lazy"/>
                     </picture>
                   {{ else }}
                     <picture>
                       <img class="d-block w-100 h-100"
-                           src="{{ $src }}"
-                           width="{{ $width }}" height="{{ $height }}"
+                           src="{{ ($src) }}"
+                           width="{{ ($width) }}" height="{{ ($height) }}"
                            alt="" loading="lazy"/>
                     </picture>
                   {{ end }}
@@ -99,14 +99,14 @@
       </div>
 
       <!--[ buttons: control ]-->
-        {{ if ((or (len $img_int) (len $img_ext)) | lt 1) }}
-          <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
+        {{ if ((or (len ($img_int)) (len ($img_ext))) | lt 1) }}
+          <button class="carousel-control-prev" type="button" data-bs-target="#{{ ($id) }}" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ i18n "previous" }}</span>
+            <span class="visually-hidden">{{ (i18n "previous") }}</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#{{ $id }}" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#{{ ($id) }}" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ i18n "next" }}</span>
+            <span class="visually-hidden">{{ (i18n "next") }}</span>
           </button>
         {{ end }}
       <!--[ / buttons: control ]-->
@@ -117,25 +117,25 @@
 <!--[ / view: lg ]-->
 
 <!--[ view: md ]-->
-{{ if (eq $view "md") }}
+{{ if (eq ($view) ("md")) }}
 
-    {{ $width := (.width | default $cfg.md.width) }}
-    {{ $height := (.height | default $cfg.md.height) }}
-    {{ $crop := ($x.Params.cover.image.crop | default $cfg.md.crop) }}
+    {{ $width := ((.width) | default ($cfg.md.width)) }}
+    {{ $height := ((.height) | default ($cfg.md.height)) }}
+    {{ $crop := (($x.Params.cover.image.crop) | default ($cfg.md.crop)) }}
     {{ $fit := "crop" }}
 
     <div class="cover-image cover-node">
         {{ with ($img_int) }}
 
           <!--[ image: internal ]-->
-          {{ range $key, $src := . | first 1 }}
-              {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
-              {{ $filename := (.Name | path.Base) }}
+          {{ range $key, $src := (. | first 1) }}
+              {{ $thumb := ($src.Fill (printf "%sx%s %s" ($width) ($height) ($crop))) }}
+              {{ $filename := ((.Name) | path.Base) }}
               <div>
-                <a class="d-block" href="{{ $x.RelPermalink }}">
+                <a class="d-block" href="{{ ($x.RelPermalink) }}">
                   <img class="d-block rounded"
-                       src="{{ $thumb.RelPermalink }}"
-                       width="{{ $width }}" height="{{ $height }}"
+                       src="{{ ($thumb.RelPermalink) }}"
+                       width="{{ ($width) }}" height="{{ ($height) }}"
                        alt="" loading="lazy"/>
                 </a>
               </div>
@@ -145,17 +145,17 @@
         {{ else }}
 
           <!--[ image: external ]-->
-          {{ range $key, $src := $img_ext | first 1 }}
+          {{ range $key, $src := (($img_ext) | first 1) }}
             <div>
-              <a class="d-block" href="{{ $x.RelPermalink }}">
-                  {{ $url := (urls.Parse $src) }}
-                  {{ if (eq $url.Host "images.unsplash.com") }}
+              <a class="d-block" href="{{ ($x.RelPermalink) }}">
+                  {{ $url := (urls.Parse ($src)) }}
+                  {{ if (eq ($url.Host) ("images.unsplash.com")) }}
                     <img class="d-block rounded"
-                         src="{{ $src }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format"
-                         width="{{ $width }}" height="{{ $height }}"
+                         src="{{ ($src) }}?crop={{ ($crop) }}&amp;w={{ ($width) }}&amp;h={{ ($height) }}&amp;fit={{ ($fit) }}&amp;auto=format"
+                         width="{{ ($width) }}" height="{{ ($height) }}"
                          alt="" loading="lazy"/>
                   {{ else }}
-                    <img class="d-block rounded" src="{{ $src }}" width="{{ $width }}" height="{{ $height }}" alt="" loading="lazy"/>
+                    <img class="d-block rounded" src="{{ ($src) }}" width="{{ ($width) }}" height="{{ ($height) }}" alt="" loading="lazy"/>
                   {{ end }}
               </a>
             </div>

@@ -1,12 +1,12 @@
-{{ $id := (printf "node-tabs-%s-comments" (.File.UniqueID | default "")) }}
+{{ $id := (printf "node-tabs-%s-comments" ((.File.UniqueID) | default "")) }}
 {{ $cfg := ($.Site.Data.cfg.node.comments) }}
 
 <div class="d-flex align-items-start">
-  <ul id="{{ $id }}" class="flex-column nav nav-pills me-3" data-ext-fn="ext-node-comments-tabs" role="tablist" aria-orientation="vertical">
+  <ul id="{{ ($id) }}" class="flex-column nav nav-pills me-3" data-ext-fn="ext-node-comments-tabs" role="tablist" aria-orientation="vertical">
 
       {{ if (and ($cfg.github.on) ($.Site.Params.comments.utterances.repo)) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "github" }}' class="nav-link active" id="node-comments-github-tab" data-bs-toggle="pill" data-bs-target="#node-comments-github" type="button" role="tab" aria-controls="node-comments-github" aria-selected="true">
+          <button title='{{ (i18n "github") }}' class="nav-link active" id="node-comments-github-tab" data-bs-toggle="pill" data-bs-target="#node-comments-github" type="button" role="tab" aria-controls="node-comments-github" aria-selected="true">
             <i class="fab fa-github fa-fw"></i>
           </button>
         </li>
@@ -14,7 +14,7 @@
 
       {{ if (and ($cfg.twitter.on) (.Params.tweets)) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "twitter" }}' class="nav-link" id="node-comments-twitter-tab" data-bs-toggle="pill" data-bs-target="#node-comments-twitter" type="button" role="tab" aria-controls="node-comments-twitter" aria-selected="false">
+          <button title='{{ (i18n "twitter") }}' class="nav-link" id="node-comments-twitter-tab" data-bs-toggle="pill" data-bs-target="#node-comments-twitter" type="button" role="tab" aria-controls="node-comments-twitter" aria-selected="false">
             <i class="fab fa-twitter fa-fw"></i>
           </button>
         </li>
@@ -22,7 +22,7 @@
 
       {{ if (and ($cfg.vk.on) ($.Site.Params.api.vk.app_id)) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "vk" }}' class="nav-link" id="node-comments-vk-tab" data-bs-toggle="pill" data-bs-target="#node-comments-vk" type="button" role="tab" aria-controls="node-comments-vk" aria-selected="false">
+          <button title='{{ (i18n "vk") }}' class="nav-link" id="node-comments-vk-tab" data-bs-toggle="pill" data-bs-target="#node-comments-vk" type="button" role="tab" aria-controls="node-comments-vk" aria-selected="false">
             <i class="fab fa-vk fa-fw"></i>
           </button>
         </li>
@@ -30,7 +30,7 @@
 
       {{ if ($cfg.facebook.on) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "facebook" }}' class="nav-link" id="node-comments-facebook-tab" data-bs-toggle="pill" data-bs-target="#node-comments-facebook" type="button" role="tab" aria-controls="node-comments-facebook" aria-selected="false">
+          <button title='{{ (i18n "facebook") }}' class="nav-link" id="node-comments-facebook-tab" data-bs-toggle="pill" data-bs-target="#node-comments-facebook" type="button" role="tab" aria-controls="node-comments-facebook" aria-selected="false">
             <i class="fab fa-facebook fa-fw"></i>
           </button>
         </li>
@@ -38,7 +38,7 @@
 
       {{ if (and ($cfg.disqus.on) ($.Site.DisqusShortname)) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "disqus" }}' class="nav-link" id="node-comments-disqus-tab" data-bs-toggle="pill" data-bs-target="#node-comments-disqus" type="button" role="tab" aria-controls="node-comments-disqus" aria-selected="false">
+          <button title='{{ (i18n "disqus") }}' class="nav-link" id="node-comments-disqus-tab" data-bs-toggle="pill" data-bs-target="#node-comments-disqus" type="button" role="tab" aria-controls="node-comments-disqus" aria-selected="false">
             <i class="fab fa-disqus fa-fw"></i>
           </button>
         </li>

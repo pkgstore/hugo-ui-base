@@ -2,15 +2,15 @@
   <table class="table table-striped table-bordered align-middle">
     <thead class="table-light">
     <tr>
-      <th class="w-25">{{ i18n "languages" }}</th>
-      <th>{{ i18n "articles" }}</th>
+      <th class="w-25">{{ (i18n "languages") }}</th>
+      <th>{{ (i18n "articles") }}</th>
     </tr>
     </thead>
     <tbody>
     {{ range (.Translations) }}
       <tr>
-        <td>{{ .Language.LanguageName }}</td>
-        <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+        <td>{{ (.Language.LanguageName) }}</td>
+        <td><a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a></td>
       </tr>
     {{ end }}
     </tbody>

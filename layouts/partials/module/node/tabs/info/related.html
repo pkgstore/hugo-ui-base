@@ -1,14 +1,14 @@
-{{ $related := ((where ($.Site.RegularPages.Related .) "Type" "in" .Type) | first 10) }}
+{{ $related := ((where ($.Site.RegularPages.Related .) "Type" "in" (.Type)) | first 10) }}
 
 <div class="node-similar">
   <section>
-    <h4>{{ i18n "see_also" }}</h4>
+    <h4>{{ (i18n "see_also") }}</h4>
     <div class="node-body">
         {{ with ($related) }}
           <ul>
               {{ range . }}
                 <li>
-                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  <a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a>
                 </li>
               {{ end }}
           </ul>

@@ -1,24 +1,24 @@
-{{ $id := (printf "node-tabs-%s-storage" (.File.UniqueID | default "")) }}
+{{ $id := (printf "node-tabs-%s-storage" ((.File.UniqueID) | default "")) }}
 {{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $docs := 0 }}{{ $files := 0 }}
 
 {{ with (.Page.Resources.Match "storage/*") }}
     {{ $files = 1 }}
 
     {{ range . }}
-        {{ if (in .MediaType.MainType "image") }}{{ $images = 1 }}{{ end }}
-        {{ if (in .MediaType.MainType "audio") }}{{ $audio = 1 }}{{ end }}
-        {{ if (in .MediaType.MainType "video") }}{{ $video = 1 }}{{ end }}
-        {{ if (or (in .MediaType.MainType "text") (in .MediaType.SubType "pdf")) }}{{ $docs = 1 }}{{ end }}
+        {{ if (in (.MediaType.MainType) ("image")) }}{{ $images = 1 }}{{ end }}
+        {{ if (in (.MediaType.MainType) ("audio")) }}{{ $audio = 1 }}{{ end }}
+        {{ if (in (.MediaType.MainType) ("video")) }}{{ $video = 1 }}{{ end }}
+        {{ if (or (in (.MediaType.MainType) ("text")) (in (.MediaType.SubType) ("pdf"))) }}{{ $docs = 1 }}{{ end }}
     {{ end }}
 
 {{ end }}
 
 <div class="d-flex align-items-start">
-  <ul id="{{ $id }}" class="flex-column nav nav-pills me-3" data-ext-fn="ext-node-storage-tabs" role="tablist" aria-orientation="vertical">
+  <ul id="{{ ($id) }}" class="flex-column nav nav-pills me-3" data-ext-fn="ext-node-storage-tabs" role="tablist" aria-orientation="vertical">
 
       {{ if ($files) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "files" }}' class="nav-link active" id="node-storage-files-tab" data-bs-toggle="pill" data-bs-target="#node-storage-files" type="button" role="tab" aria-controls="node-storage-files" aria-selected="true">
+          <button title='{{ (i18n "files") }}' class="nav-link active" id="node-storage-files-tab" data-bs-toggle="pill" data-bs-target="#node-storage-files" type="button" role="tab" aria-controls="node-storage-files" aria-selected="true">
             <i class="fas fa-folder-open fa-fw"></i>
           </button>
         </li>
@@ -26,7 +26,7 @@
 
       {{ if ($images) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "images" }}' class="nav-link" id="node-storage-images-tab" data-bs-toggle="pill" data-bs-target="#node-storage-images" type="button" role="tab" aria-controls="node-storage-images" aria-selected="false">
+          <button title='{{ (i18n "images") }}' class="nav-link" id="node-storage-images-tab" data-bs-toggle="pill" data-bs-target="#node-storage-images" type="button" role="tab" aria-controls="node-storage-images" aria-selected="false">
             <i class="fas fa-images fa-fw"></i>
           </button>
         </li>
@@ -34,7 +34,7 @@
 
       {{ if ($audio) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "audio" }}' class="nav-link" id="node-storage-audio-tab" data-bs-toggle="pill" data-bs-target="#node-storage-audio" type="button" role="tab" aria-controls="node-storage-audio" aria-selected="false">
+          <button title='{{ (i18n "audio") }}' class="nav-link" id="node-storage-audio-tab" data-bs-toggle="pill" data-bs-target="#node-storage-audio" type="button" role="tab" aria-controls="node-storage-audio" aria-selected="false">
             <i class="fas fa-volume-up fa-fw"></i>
           </button>
         </li>
@@ -42,7 +42,7 @@
 
       {{ if ($video) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "video" }}' class="nav-link" id="node-storage-video-tab" data-bs-toggle="pill" data-bs-target="#node-storage-video" type="button" role="tab" aria-controls="node-storage-video" aria-selected="false">
+          <button title='{{ (i18n "video") }}' class="nav-link" id="node-storage-video-tab" data-bs-toggle="pill" data-bs-target="#node-storage-video" type="button" role="tab" aria-controls="node-storage-video" aria-selected="false">
             <i class="fas fa-film fa-fw"></i>
           </button>
         </li>
@@ -50,7 +50,7 @@
 
       {{ if ($docs) }}
         <li class="nav-item" role="presentation">
-          <button title='{{ i18n "docs" }}' class="nav-link" id="node-storage-docs-tab" data-bs-toggle="pill" data-bs-target="#node-storage-docs" type="button" role="tab" aria-controls="node-storage-docs" aria-selected="false">
+          <button title='{{ (i18n "docs") }}' class="nav-link" id="node-storage-docs-tab" data-bs-toggle="pill" data-bs-target="#node-storage-docs" type="button" role="tab" aria-controls="node-storage-docs" aria-selected="false">
             <i class="fas fa-file-alt fa-fw"></i>
           </button>
         </li>

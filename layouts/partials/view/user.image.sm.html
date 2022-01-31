@@ -1,4 +1,4 @@
-<article class="d-flex node-{{ .Type }}">
+<article class="d-flex node-{{ (.Type) }}">
   <div class="flex-shrink-0">
     <div class="node-cover">
         {{ (partial "module/user/cover/avatar" .) }}
@@ -7,7 +7,7 @@
   <div class="flex-grow-1 ms-3">
     <header>
       <h4 class="h5 mt-0">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a>
       </h4>
     </header>
     <div class="node-body">

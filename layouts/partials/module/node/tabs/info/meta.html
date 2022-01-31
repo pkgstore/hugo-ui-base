@@ -1,21 +1,21 @@
 <div class="node-meta">
   <section>
-    <h4>{{ i18n "meta" }}</h4>
+    <h4>{{ (i18n "meta") }}</h4>
     <div class="node-body">
         {{ with (.File) }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "file_id" }}</span>
+              <span>{{ (i18n "file_id") }}</span>
             </li>
             <li class="col">
-              <input type="text" class="form-control" value="{{ .UniqueID }}" readonly/>
+              <input type="text" class="form-control" value="{{ (.UniqueID) }}" readonly/>
             </li>
           </ul>
         {{ end }}
         {{ with (.Param "uuid") }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "uuid" }}</span>
+              <span>{{ (i18n "uuid") }}</span>
             </li>
             <li class="col">
               <input type="text" class="form-control" value="{{ . }}" readonly/>
@@ -25,17 +25,17 @@
         {{ with (.File) }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "sys_path" }}</span>
+              <span>{{ (i18n "sys_path") }}</span>
             </li>
             <li class="col">
-              <input type="text" class="form-control" value="{{ .Path }}" readonly/>
+              <input type="text" class="form-control" value="{{ (.Path) }}" readonly/>
             </li>
           </ul>
         {{ end }}
         {{ with (.Type) }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "type" }}</span>
+              <span>{{ (i18n "type") }}</span>
             </li>
             <li class="col">
               <input type="text" class="form-control" value="{{ . }}" readonly/>
@@ -45,7 +45,7 @@
         {{ with (.WordCount) }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "word_count" }}</span>
+              <span>{{ (i18n "word_count") }}</span>
             </li>
             <li class="col">
               <input type="text" class="form-control" value="{{ . }}" readonly/>
@@ -55,7 +55,7 @@
         {{ with (.ReadingTime) }}
           <ul class="row list-unstyled">
             <li class="col-4">
-              <span>{{ i18n "reading_time" }} ({{ i18n "minutes" }})</span>
+              <span>{{ (i18n "reading_time") }} ({{ (i18n "minutes") }})</span>
             </li>
             <li class="col">
               <input type="text" class="form-control" value="{{ . }}" readonly/>
