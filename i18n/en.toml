@@ -152,20 +152,24 @@ other = "News"
 [opinion]
 other = "Opinion"
 
-[feedback]
-other = "Feedback"
-
-[feedback_p1]
-other = ""
-
-[feedback_p2]
-other = ""
-
-[feedback_p3]
-other = ""
-
 [site_resize]
 other = "Resize site"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Feedback.
+# ----------------------------------------------------------------------------------------------------------------------
+
+[feedback.header]
+other = "Feedback"
+
+[feedback.p1]
+other = ""
+
+[feedback.p2]
+other = ""
+
+[feedback.p3]
+other = ""
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Alerts.
@@ -179,6 +183,15 @@ other = "Information on this page is under revision. Information may be added (a
 
 [alert.opinion]
 other = "Information on this page is the subjective opinion of author."
+
+[alert.categories_not_found]
+other = "Categories not found."
+
+[alert.tags_not_found]
+other = "Tags not found."
+
+[alert.related_not_found]
+other = "Related not found."
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Browser console.

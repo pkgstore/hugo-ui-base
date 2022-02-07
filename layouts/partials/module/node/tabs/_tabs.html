@@ -37,7 +37,7 @@
 
     {{ if (and ($.Site.Data.cfg.node.feedback.on) (.Params.feedback)) }}
       <li class="nav-item" role="presentation">
-        <button title='{{ (i18n "feedback") }}' class="nav-link" id="node-feedback-tab" data-bs-toggle="tab" data-bs-target="#node-feedback" type="button" role="tab" aria-controls="node-feedback" aria-selected="false">
+        <button title='{{ (i18n "feedback.header") }}' class="nav-link" id="node-feedback-tab" data-bs-toggle="tab" data-bs-target="#node-feedback" type="button" role="tab" aria-controls="node-feedback" aria-selected="false">
           <i class="fas fa-comment-dots fa-fw"></i>
         </button>
       </li>

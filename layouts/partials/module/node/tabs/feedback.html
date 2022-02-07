@@ -7,15 +7,15 @@
     <article>
       <h4>{{ (i18n "info") }}</h4>
       <div class="node-body">
-        <p>{{ (i18n "feedback_p1") }}</p>
-        <p>{{ (i18n "feedback_p2") }}</p>
-        <p>{{ (i18n "feedback_p3") }}</p>
+        <p>{{ (i18n "feedback.p1") }}</p>
+        <p>{{ (i18n "feedback.p2") }}</p>
+        <p>{{ (i18n "feedback.p3") }}</p>
       </div>
     </article>
   </div>
   <div class="col">
     <article>
-      <h4>{{ (i18n "feedback") }}</h4>
+      <h4>{{ (i18n "feedback.header") }}</h4>
       <div class="node-body">
         <form method="post" action="https://api.staticforms.xyz/submit">
           <input type="hidden" name="accessKey" value="{{ ($token) }}"/>
