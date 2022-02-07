@@ -3,7 +3,7 @@
     <div class="node-body">
       <ul>
           {{ range (.Data.Pages) }}
-            <li>
+            <li class="{{ with (.Param "private") }}private-content{{ end }}">
               <a href="{{ (.Permalink) }}">{{ (.Title) }}</a>
             </li>
           {{ end }}
