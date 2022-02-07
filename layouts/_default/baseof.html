@@ -13,7 +13,7 @@
       profile: http://ogp.me/ns/profile#
       fb: http://ogp.me/ns/fb#">
 <head>{{ (partial "head" .) }}</head>
-<body class="d-flex flex-column h-100 {{ ($home) }} {{ ($node) }} {{ ($page) }} type-{{ ($type) }}">
+<body class="d-flex flex-column h-100 {{ ($home) }} {{ ($node) }} {{ ($page) }} type-{{ ($type) }} ext-private-disable">
 <header>{{ (partial "header" .) }}</header>
 <div class="wrapper flex-shrink-0">
     {{ if (and ($.Site.Data.cfg.sidebar.on) ($.IsHome)) }}

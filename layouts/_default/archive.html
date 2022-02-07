@@ -17,7 +17,7 @@
                       <div class="node-body">
                         <ul class="list-unstyled">
                             {{ range (.Pages) }}
-                              <li class="d-flex">
+                              <li class="d-flex {{ with (.Param "private") }}private-content{{ end }}">
                                 <div class="me-3">
                                   <code>{{ (.Date.UTC.Format "01/02") }}</code>
                                 </div>

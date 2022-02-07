@@ -20,7 +20,7 @@ function _event($action) {
   }
 
   if ($action === 'click') {
-    document.getElementById('ext-site-resize').addEventListener('click', ($e) => {
+    document.getElementById('ext-btn-site-resize').addEventListener('click', ($e) => {
       $e.preventDefault();
       if (localStorage.getItem('site-container')) {
         _fluid('off');
@@ -59,14 +59,14 @@ function _fluid($action) {
 }
 
 function _button($action) {
-  if ($action === 'on' && document.querySelector('#ext-site-resize .fa-expand-alt')) {
-    const $elSiteResize = document.querySelector('#ext-site-resize .fa-expand-alt');
+  if ($action === 'on' && document.querySelector('#ext-btn-site-resize .fa-expand-alt')) {
+    const $elSiteResizeBtn = document.querySelector('#ext-btn-site-resize .fa-expand-alt');
 
-    $elSiteResize.classList.replace('fa-expand-alt', 'fa-compress-alt');
+    $elSiteResizeBtn.classList.replace('fa-expand-alt', 'fa-compress-alt');
   }
-  if ($action === 'off' && document.querySelector('#ext-site-resize .fa-compress-alt')) {
-    const $elSiteResize = document.querySelector('#ext-site-resize .fa-compress-alt');
+  if ($action === 'off' && document.querySelector('#ext-btn-site-resize .fa-compress-alt')) {
+    const $elSiteResizeBtn = document.querySelector('#ext-btn-site-resize .fa-compress-alt');
 
-    $elSiteResize.classList.replace('fa-compress-alt', 'fa-expand-alt');
+    $elSiteResizeBtn.classList.replace('fa-compress-alt', 'fa-expand-alt');
   }
 }

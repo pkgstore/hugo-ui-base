@@ -7,7 +7,7 @@
 
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range (.Paginator.Pages) }}
-            <div class="col">
+            <div class="col {{ with (.Param "private") }}private-content{{ end }}">
                 {{ (partial "view/node.image.md" .) }}
             </div>
           {{ end }}

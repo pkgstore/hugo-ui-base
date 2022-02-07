@@ -5,7 +5,7 @@
 
         {{ (partial "breadcrumb" .) }}
 
-      <article>
+      <article class="{{ with (.Param "private") }}private-content{{ end }}">
         <header>
           <div class="node-cover mb-3">
               {{ (partial "module/node/cover/image" (dict "context" . "view" "lg")) }}

@@ -25,7 +25,7 @@
 
       <!--[ view: 0 ]-->
         {{ if (eq ($view) "0") }}
-          <div class="col">
+          <div class="col {{ with (.Param "private") }}private-content{{ end }}">
               {{ range (first 1 .) }}
                   {{ (partial "view/node.image.lg" .) }}
               {{ end }}
@@ -33,7 +33,7 @@
           <div class="col">
             <div class="row row-cols-1 row-cols-lg-2 g-3">
                 {{ range (after 1 .) }}
-                  <div class="col">
+                  <div class="col {{ with (.Param "private") }}private-content{{ end }}">
                       {{ (partial "view/node.image.lg" .) }}
                   </div>
                 {{ end }}
@@ -47,7 +47,7 @@
           <div class="col">
             <div class="row row-cols-1 row-cols-lg-2 g-3">
                 {{ range . }}
-                  <div class="col">
+                  <div class="col {{ with (.Param "private") }}private-content{{ end }}">
                       {{ (partial "view/node.image.lg" .) }}
                   </div>
                 {{ end }}
@@ -61,7 +61,7 @@
           <div class="col">
             <div class="row row-cols-1 row-cols-lg-2 g-3">
                 {{ range . }}
-                  <div class="col">
+                  <div class="col {{ with (.Param "private") }}private-content{{ end }}">
                       {{ (partial "view/node.image.md" .) }}
                   </div>
                 {{ end }}
