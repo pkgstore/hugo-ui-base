@@ -48,14 +48,14 @@ function _private($action) {
 }
 
 function _button($action) {
-  if ($action === 'on' && document.querySelector('#ext-btn-private .fa-eye-slash')) {
-    const $elPrivateBtn = document.querySelector('#ext-btn-private .fa-eye-slash');
-
-    $elPrivateBtn.classList.replace('fa-eye-slash', 'fa-eye');
-  }
-  if ($action === 'off' && document.querySelector('#ext-btn-private .fa-eye')) {
+  if ($action === 'on' && document.querySelector('#ext-btn-private .fa-eye')) {
     const $elPrivateBtn = document.querySelector('#ext-btn-private .fa-eye');
 
     $elPrivateBtn.classList.replace('fa-eye', 'fa-eye-slash');
+  }
+  if ($action === 'off' && document.querySelector('#ext-btn-private .fa-eye-slash')) {
+    const $elPrivateBtn = document.querySelector('#ext-btn-private .fa-eye-slash');
+
+    $elPrivateBtn.classList.replace('fa-eye-slash', 'fa-eye');
   }
 }
