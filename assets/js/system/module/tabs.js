@@ -11,7 +11,7 @@ function active($selector, $button) {
 
   const $elID = document.querySelector($selector).getAttribute('id');
   const $elTabs = document.querySelectorAll($selector + ' ' + $button);
-  const $storageItem = $elID + '-active';
+  const $storageItem = $elID;
 
   $elTabs.forEach(($i) => {
     _eventActive($i, $storageItem)
