@@ -3,6 +3,21 @@
 {{ $cfg := ($x.Site.Data.cfg.view.node.icon) }}
 {{ $icon := (($x.Params.cover.icon.id) | default ($cfg.default)) }}
 
+<!--[ view: sm ]-->
+{{ if (eq ($view) ("sm")) }}
+    {{ $width := ((.width) | default ($cfg.sm.width)) }}
+    {{ $height := ((.height) | default ($cfg.sm.height)) }}
+    {{ $size := ((.size) | default ($cfg.sm.size)) }}
+
+    <a href="{{ ($x.RelPermalink) }}"
+       class="cover-icon d-flex justify-content-center align-items-center text-decoration-none border rounded p-1 text-muted"
+       style="width: {{ $width }}; height: {{ $height }};">
+      <i class="{{ ($icon) }} fa-fw fa-{{ ($size) }}"></i>
+    </a>
+{{ end }}
+<!--[ / view: sm ]-->
+
+
 <!--[ view: md ]-->
 {{ if (eq ($view) ("md")) }}
     {{ $width := ((.width) | default ($cfg.md.width)) }}

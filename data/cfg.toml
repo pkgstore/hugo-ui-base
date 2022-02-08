@@ -108,6 +108,11 @@ height = '331'
 [view.node.icon]
 default = 'fas fa-folder-open'
 
+[view.node.icon.sm]
+width = '120px'
+height = '120px'
+size = '2x'
+
 [view.node.icon.md]
 width = '160px'
 height = '160px'
