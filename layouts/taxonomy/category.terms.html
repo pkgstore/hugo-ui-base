@@ -8,8 +8,9 @@
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ $type := (.Type) }}
 
-          {{ range $key, $value := (.Data.Terms.Alphabetical) }}
+          {{ range $key, $value := (.Data.Terms.ByCount) }}
               {{ $name := (.Name) }}{{ $count := (.Count) }}
+
               {{ with ($.Site.GetPage (printf "/%s/%s" ($type) ($name))) }}
                 <div class="col">
                   <article class="d-flex">
@@ -28,6 +29,7 @@
                   </article>
                 </div>
               {{ end }}
+
           {{ end }}
 
       </div>
