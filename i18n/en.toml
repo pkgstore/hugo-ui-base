@@ -385,4 +385,7 @@ other = "Address"
 other = "Check if you want to specify sender address."
 
 [form.donate.submit]
-other = "Transfer"
+other = "Submit"
+
+[form.donate.reset]
+other = "Reset"
