@@ -1,5 +1,9 @@
 {{ $x := ((.context) | default .) }}
-{{ $id := (printf "node-cover-%s" (($x.File.UniqueID) | default "")) }}
+
+{{ $fid := (md5 (now.Unix)) }}
+{{ with ($x.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "node-cover-%s" (($fid) | default "")) }}
 {{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
 {{ $img_ext := (($x.Params.images) | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
 

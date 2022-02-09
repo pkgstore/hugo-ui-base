@@ -196,6 +196,9 @@ other = "Tags not found."
 [alert.related_not_found]
 other = "Related not found."
 
+[alert.donate]
+other = "Here you can express gratitude to authors for material provided. Click on button with name of author and in pop-up window fill out form as you wish."
+
 # ----------------------------------------------------------------------------------------------------------------------
 # Browser console.
 # ----------------------------------------------------------------------------------------------------------------------
@@ -207,7 +210,7 @@ other = "Buy me a"
 other = "About me"
 
 # ----------------------------------------------------------------------------------------------------------------------
-# 404 Page
+# 404 Page.
 # ----------------------------------------------------------------------------------------------------------------------
 
 [404.homepage]
@@ -232,7 +235,7 @@ other = "Finding information"
 other = "Try searching for necessary information using a search engine."
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Social
+# Social.
 # ----------------------------------------------------------------------------------------------------------------------
 
 [facebook]
@@ -305,7 +308,7 @@ other = "Pinterest"
 other = "WhatsApp"
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Form
+# Contact Form.
 # ----------------------------------------------------------------------------------------------------------------------
 
 [form.name]
@@ -322,3 +325,64 @@ other = "Enter message..."
 
 [form.submit]
 other = "Submit"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Donation Form.
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.donate.targets]
+other = "Target transfer..."
+
+[form.donate.targets_help]
+other = "Enter target transfer."
+
+[form.donate.targets_value]
+other = "Gratitude for work"
+
+[form.donate.sum_help]
+other = "Set amount."
+
+[form.donate.card]
+other = "Bank Card"
+
+[form.donate.yooMoney]
+other = "YooMoney"
+
+[form.donate.mobile_phone]
+other = "Mobile Phone"
+
+[form.donate.payment_type_help]
+other = "Select a transfer method."
+
+[form.donate.comment_placeholder]
+other = "Enter a comment (if available)..."
+
+[form.donate.comment_help]
+other = "Enter an accompanying comment (max 200 characters)."
+
+[form.donate.name]
+other = "Name"
+
+[form.donate.name_help]
+other = "Check if you want to specify name of sender."
+
+[form.donate.email]
+other = "E-mail"
+
+[form.donate.email_help]
+other = "Check if you want to specify sender's e-mail."
+
+[form.donate.phone]
+other = "Phone"
+
+[form.donate.phone_help]
+other = "Check if you want to specify sender's phone number."
+
+[form.donate.address]
+other = "Address"
+
+[form.donate.address_help]
+other = "Check if you want to specify sender address."
+
+[form.donate.submit]
+other = "Transfer"

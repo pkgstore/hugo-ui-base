@@ -1,4 +1,7 @@
-{{ $id := (printf "node-tabs-%s-storage" ((.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with (.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "node-tabs-%s-storage" (($fid) | default "")) }}
 {{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $docs := 0 }}{{ $files := 0 }}
 
 {{ with (.Page.Resources.Match "storage/*") }}

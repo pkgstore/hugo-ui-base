@@ -1,4 +1,7 @@
-{{ $id := (printf "vk-comments-%s" ((.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with (.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "vk-comments-%s" (($fid) | default "")) }}
 {{ $token := (($.Site.Params.api.vk.app_id) | default "") }}
 
 <div id="{{ ($id) }}"></div>

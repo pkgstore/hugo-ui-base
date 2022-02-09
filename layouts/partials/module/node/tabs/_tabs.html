@@ -1,4 +1,7 @@
-{{ $id := (printf "node-tabs-%s" ((.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with (.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "node-tabs-%s" (($fid) | default "")) }}
 
 {{ $storage := 0 }}
 {{ with (.Page.Resources.Match "storage/*") }}{{ $storage = 1 }}{{ end }}
@@ -59,6 +62,14 @@
       </li>
     {{ end }}
 
+    {{ if (in (.Type) ("posts")) }}
+      <li class="nav-item" role="presentation">
+        <button title='{{ (i18n "donate") }}' class="nav-link" id="node-donate-tab" data-bs-toggle="tab" data-bs-target="#node-donate" type="button" role="tab" aria-controls="node-donate" aria-selected="false">
+          <i class="fas fa-gift fa-fw"></i>
+        </button>
+      </li>
+    {{ end }}
+
     {{ if ($.Site.Data.cfg.node.share.on) }}
       <li class="nav-item ms-auto" role="presentation">
         <button title='{{ (i18n "share") }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" data-bs-target="#node-share" type="button" role="tab" aria-controls="node-share" aria-selected="false">
@@ -107,6 +118,12 @@
     {{ if (.IsTranslated) }}
       <div class="tab-pane" id="node-lang" role="tabpanel" aria-labelledby="node-lang-tab">
           {{ (partial "module/node/tabs/languages" .) }}
+      </div>
+    {{ end }}
+
+    {{ if (in (.Type) ("posts")) }}
+      <div class="tab-pane" id="node-donate" role="tabpanel" aria-labelledby="node-donate-tab">
+          {{ (partial "module/node/tabs/donate" .) }}
       </div>
     {{ end }}
 

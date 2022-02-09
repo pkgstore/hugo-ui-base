@@ -1,4 +1,7 @@
-{{ $id := (printf "node-tabs-%s-comments" ((.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with (.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "node-tabs-%s-comments" (($fid) | default "")) }}
 {{ $cfg := ($.Site.Data.cfg.node.comments) }}
 
 <div class="d-flex align-items-start">

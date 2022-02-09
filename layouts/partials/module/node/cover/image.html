@@ -2,7 +2,10 @@
 {{ $view := ((.view) | default "md") }}
 {{ $cfg := ($x.Site.Data.cfg.view.node.image) }}
 
-{{ $id := (printf "node-cover-%s" (($x.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with ($x.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "node-cover-%s" (($fid) | default "")) }}
 {{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
 {{ $img_ext := (($x.Params.images) | default (slice ($cfg.default))) }}
 

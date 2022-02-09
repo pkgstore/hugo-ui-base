@@ -1,4 +1,7 @@
-{{ $id := (printf "fb-comments-%s" ((.File.UniqueID) | default "")) }}
+{{ $fid := (md5 (now.Unix)) }}
+{{ with (.File) }}{{ $fid = (.UniqueID) }}{{ end }}
+
+{{ $id := (printf "fb-comments-%s" (($fid) | default "")) }}
 {{ $lang := (($.Site.LanguageCode) | default "en-US") }}
 {{ $lang = (replace ($lang) "-" "_") }}
 
