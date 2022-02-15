@@ -23,7 +23,7 @@
         </li>
       {{ end }}
 
-      {{ if (and ($cfg.vk.on) ($.Site.Params.api.vk.app_id)) }}
+      {{ if (and ($cfg.vk.on) ($.Site.Data.api.vk.app.id)) }}
         <li class="nav-item" role="presentation">
           <button title='{{ (i18n "vk") }}' class="nav-link" id="node-comments-vk-tab" data-bs-toggle="pill" data-bs-target="#node-comments-vk" type="button" role="tab" aria-controls="node-comments-vk" aria-selected="false">
             <i class="fab fa-vk fa-fw"></i>
@@ -62,7 +62,7 @@
         </div>
       {{ end }}
 
-      {{ if (and ($cfg.vk.on) ($.Site.Params.api.vk.app_id)) }}
+      {{ if (and ($cfg.vk.on) ($.Site.Data.api.vk.app.id)) }}
         <div class="tab-pane" id="node-comments-vk" role="tabpanel" aria-labelledby="node-comments-vk-tab">
             {{ (partial "module/node/tabs/comments/vk" .) }}
         </div>

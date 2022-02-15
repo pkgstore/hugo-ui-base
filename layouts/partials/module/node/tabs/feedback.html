@@ -1,6 +1,6 @@
 {{ $subject := ((.Page.Title) | default "" ) }}
 {{ $subject = (htmlEscape (printf "[%s] %s" (.Site.Title) ($subject))) }}
-{{ $token := ((($.Site.Params.api.feedback.token) | default "") | base64Decode) }}
+{{ $token := ((($.Site.Data.api.static_forms.token) | default "") | base64Decode) }}
 
 <div class="row row-cols-1 row-cols-lg-2 g-3">
   <div class="col">
