@@ -18,7 +18,7 @@ categories:
 tags:
   - ''
 authors:
-  - 'z17cx'
+  - 'KitsuneSolar'
 licenses:
   - 'cc-by-sa-4.0'
 
