@@ -2,9 +2,9 @@
 {{ with (.Summary) }}{{ $description = . }}{{ end }}
 {{ with (.Description) }}{{ $description = . }}{{ end }}
 
-{{ $pages := (where ($.Site.RegularPages) "Type" "in" ($.Site.Params.sections.blog)) }}
+{{ $posts := (where $.Site.RegularPages "Type" "in" "posts") }}
 {{ $limit := ($.Site.Config.Services.RSS.Limit) }}
-{{ if (ge ($limit) 1) }}{{ $pages = (($pages) | first ($limit)) }}{{ end }}
+{{ if (ge ($limit) 1) }}{{ $posts = (($posts) | first ($limit)) }}{{ end }}
 
 {{ ((printf "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>") | safeHTML) }}
 <rss version="2.0"
@@ -59,7 +59,7 @@
       {{ with (.OutputFormats.Get "opensearch") }}
           {{ ((printf "<atom:link href=%q rel='search' type=%q/>" (.Permalink) (.MediaType)) | safeHTML) }}
       {{ end }}
-      {{ range $pages }}
+      {{ range $posts }}
         <item>
           <title>{{ (.Title) }}</title>
           <link>{{ (.Permalink) }}</link>

@@ -1,6 +1,6 @@
 {{ define "main" }}
-    {{ $cfg := ($.Site.Data.single) }}
-    {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+    {{ $posts := (where $.Site.RegularPages "Type" "in" "posts") }}
+
     {{ with ($posts) }}
       <div class="section py-3">
         <div class="container">
