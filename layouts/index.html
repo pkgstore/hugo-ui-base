@@ -1,3 +1,49 @@
 {{ define "main" }}
+    {{ $cfg := ($.Site.Data.single) }}
+    {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+    {{ with ($posts) }}
+      <div class="section py-3">
+        <div class="container">
+
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+                {{ range (first 1 .) }}
+                  <article class="node-{{ .Type }}">
+                    <header>
+                        {{ if (.Param "cover.image.url") }}
+                            {{ (partial "module/node/cover/image.lg" .) }}
+                        {{ end }}
+                      <div class="node-title">
+                        <h4 class="h5"><a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a></h4>
+                      </div>
+                    </header>
+                    <div class="node-body">{{ (.Render "summary") }}</div>
+                  </article>
+                {{ end }}
+            </div>
+            <div class="col">
+              <div class="row row-cols-1 row-cols-lg-2 g-3">
+                  {{ range (after 1 .) }}
+                    <div class="col">
+                      <article class="node-{{ .Type }}">
+                        <header>
+                            {{ if (.Param "cover.image.url") }}
+                                {{ (partial "module/node/cover/image.lg" .) }}
+                            {{ end }}
+                          <div class="node-title">
+                            <h4 class="h5"><a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a></h4>
+                          </div>
+                        </header>
+                        <div class="node-body">{{ (.Render "summary") }}</div>
+                      </article>
+                    </div>
+                  {{ end }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {{ end }}
 
 {{ end }}

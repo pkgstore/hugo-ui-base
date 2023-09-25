@@ -1,9 +1,9 @@
 {{ define "main" }}
 
     {{ $cfg := ($.Site.Data.single) }}
-    {{ $id_tabs := (printf "node-tabs-%s" ((.File.UniqueID) | default "")) }}
+    {{ $tabsID := (printf "node-tabs-%s" ((.File.UniqueID) | default "")) }}
 
-    <div class="section py-3 py-md-5">
+    <div class="section py-3">
       <div class="container">
 
           {{ (partial "breadcrumb" .) }}
@@ -11,31 +11,7 @@
         <article>
           <header>
               {{ if (.Param "cover.image.url") }}
-                <div class="node-cover mb-3">
-                    {{ $width := 1600 }}{{ $height := 900 }}
-                    {{ $crop := ((.Param "cover.image.crop") | default "entropy") }}
-                    {{ $fit := ((.Param "cover.image.fit") | default "crop") }}
-                    {{ $src := (.Param "cover.image.url") }}
-                    {{ $srcset := (slice
-                    (dict "width" "640" "height" "360")
-                    (dict "width" "768" "height" "432")
-                    (dict "width" "1024" "height" "576")
-                    (dict "width" "1280" "height" "720")
-                    (dict "width" "1600" "height" "900")
-                    ) }}
-                  <picture>
-                    <source srcset='
-                  {{ range $i, $e := ($srcset) }}
-                  {{ if $i }},{{ end }}
-                  {{ ($src) }}?crop={{ ($crop) }}&amp;w={{ (.width) }}&amp;h={{ (.height) }}&amp;fit={{ ($fit) }}&amp;auto=format {{ (.width) }}w
-                  {{ end }}
-                  ' sizes="(min-width: 576px) 100vw"/>
-                    <img class="d-block w-100 h-100 rounded"
-                         src="{{ ($src) }}?crop={{ ($crop) }}&amp;w={{ ($width) }}&amp;h={{ ($height) }}&amp;fit={{ ($fit) }}&amp;auto=format"
-                         width="{{ ($width) }}" height="{{ ($height) }}"
-                         alt="" loading="lazy"/>
-                  </picture>
-                </div>
+                  {{ (partial "module/node/cover/image.lg" .) }}
               {{ end }}
             <div class="node-title">
               <h1 class="text-center">{{ (.Title) }}</h1>
@@ -72,7 +48,7 @@
                 {{ end }}
             </ul>
           </footer>
-          <ul class="nav nav-tabs mb-3" id="{{ ($id_tabs) }}" data-ext-fn="ext-node-tabs" role="tablist">
+          <ul class="nav nav-tabs mb-3" id="{{ ($tabsID) }}" data-ext-fn="ext-node-tabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button title='{{ (i18n "home") }}' class="nav-link active" id="tab-main-home" data-bs-toggle="tab" data-bs-target="#tab-pane-main-home" type="button" role="tab" aria-controls="tab-pane-main-home" aria-selected="true">
                 <i class="fas fa-home fa-fw"></i>
@@ -103,6 +79,25 @@
           <div class="tab-content">
             <div class="tab-pane show active" id="tab-pane-main-home" role="tabpanel" aria-labelledby="tab-main-home" tabindex="0">
               <div class="node-body">{{ (.Content) }}</div>
+                {{ with (.Param "sources") }}
+                    {{ if (not (eq (index . 0) "")) }}
+                      <div class="text-muted font-italic border-top mt-5 pt-3 small">
+                        <p>{{ i18n "sources" }}:</p>
+                        <ul>
+                            {{ range . }}
+                              <li>
+                                  {{ if (hasPrefix . "http") }}
+                                      {{ $url := (urls.Parse .) }}
+                                      <a class="text-reset" href="{{ . }}" target="_blank" rel="noopener nofollow">{{ $url.Host }}</a>
+                                  {{ else }}
+                                      {{ . }}
+                                  {{ end }}
+                              </li>
+                            {{ end }}
+                        </ul>
+                      </div>
+                    {{ end }}
+                {{ end }}
             </div>
               {{ if ($cfg.tab.info.enabled) }}
                 <div class="tab-pane" id="tab-pane-main-info" role="tabpanel" aria-labelledby="tab-main-info" tabindex="0">

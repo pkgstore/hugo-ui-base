@@ -17,6 +17,8 @@ authors:
   - 'Author_01'
 licenses:
   - 'cc-by-sa-4.0'
+sources:
+  - ''
 complexity: ''
 
 date: '{{ (.Date) }}'

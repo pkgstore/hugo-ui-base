@@ -1,0 +1,14 @@
+<div class="flex-shrink-0 me-3 d-none d-md-block">
+  <div class="node-cover">
+      {{ $width := 160 }}{{ $height := 160 }}
+      {{ $crop := ((.Param "cover.image.crop") | default "entropy") }}
+      {{ $fit := ((.Param "cover.image.fit") | default "crop") }}
+      {{ $src := (.Param "cover.image.url") }}
+    <a class="d-block" href="{{ (.RelPermalink) }}">
+      <img class="d-block rounded"
+           src="{{ ($src) }}?crop={{ ($crop) }}&amp;w={{ ($width) }}&amp;h={{ ($height) }}&amp;fit={{ ($fit) }}&amp;auto=format"
+           width="{{ ($width) }}" height="{{ ($height) }}"
+           alt="" loading="lazy"/>
+    </a>
+  </div>
+</div>

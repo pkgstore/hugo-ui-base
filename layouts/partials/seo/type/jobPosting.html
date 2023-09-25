@@ -1,0 +1,62 @@
+{{ $date := ((.Date.UTC.Format "2006-01-02T15:04:05Z07:00") | default "") }}
+{{ $datePosted := ((.PublishDate.UTC.Format "2006-01-02T15:04:05") | default ($date)) }}
+{{ $employmentType := ((.Params.employmentType) | default "") }}
+
+{{ $description := ($.Site.Params.description) }}
+{{ with (.Summary) }}{{ $description = . }}{{ end }}
+{{ with (.Description) }}{{ $description = . }}{{ end }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "{{ (.Title) }}",
+    "description": "{{ (($description) | plainify) }}",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "{{ ($.Site.Title) }}",
+      "value": "{{ (.File.UniqueID) }}"
+    },
+    "datePosted": "{{ ($datePosted) }}",
+    "validThrough": "{{ (.expiryDate) }}",
+    "employmentType": [
+      "{{ (delimit $employmentType ", ") }}"
+    ],
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "{{ ($.Site.Title) }}",
+      "sameAs": "{{ ($.Site.BaseURL) }}",
+      "logo": "{{ (("logo.svg") | absURL) }}"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "",
+        "addressRegion": "",
+        "postalCode": "",
+        "addressCountry": ""
+      }
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "",
+      "value": {
+        "@type": "QuantitativeValue",
+        "value": "",
+        "minValue": "",
+        "maxValue": "",
+        "unitText": ""
+      }
+    },
+    "educationRequirements": "",
+    "experienceRequirements": "",
+    "industry": "",
+    "qualifications": "",
+    "responsibilities": "",
+    "skills": "",
+    "workHours": ""
+  }
+
+</script>

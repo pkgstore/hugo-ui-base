@@ -1,0 +1,14 @@
+{{ $left := ($.Site.Menus.main | default "") }}
+
+{{ if ($left) }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type":"ItemList",
+    "itemListElement": [
+      {{ range $i, $e := $left }}{{ if $i }},{{ end }}{"@type": "SiteNavigationElement","position": "{{ $e.Weight }}","name": "{{ $e.Name }}","url": "{{ ($e.URL | absLangURL) }}"}{{ end }}
+    ]
+  }
+
+  </script>
+{{ end }}

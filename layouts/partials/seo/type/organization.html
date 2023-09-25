@@ -1,0 +1,29 @@
+{{ $sameAs := ($.Site.Params.organization.social.url | default "") }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ ($.Site.Title) }}",
+    "legalName": "{{ ($.Site.Title) }}",
+    "foundingDate": "",
+    "url": "{{ ($.Site.BaseURL) }}",
+    "logo": "{{ (("logo.svg") | absURL) }}",
+    "description": "{{ (($.Site.Params.description) | plainify) }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "addressCountry": ""
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "",
+      "telephone": "",
+      "email": ""
+    },
+    "sameAs": []
+  }
+</script>
