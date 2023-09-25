@@ -1,0 +1,12 @@
+name = "UI Blog"
+license = "MIT"
+licenselink = ""
+description = "Blog User Interface"
+homepage = "https://ihub.to"
+tags = ["website", "responsive", "multilingual", "mobile"]
+features = ["posts", "shortcodes", "comments"]
+min_version = "0.88.0"
+
+[author]
+name = "iHub TO"
+homepage = "https://ihub.to"

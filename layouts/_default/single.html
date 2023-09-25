@@ -1,0 +1,160 @@
+{{ define "main" }}
+
+    {{ $cfg := ($.Site.Data.single) }}
+    {{ $id_tabs := (printf "node-tabs-%s" ((.File.UniqueID) | default "")) }}
+
+    <div class="section py-3 py-md-5">
+      <div class="container">
+
+          {{ (partial "breadcrumb" .) }}
+
+        <article>
+          <header>
+              {{ if (.Param "cover.image.url") }}
+                <div class="node-cover mb-3">
+                    {{ $width := 1600 }}{{ $height := 900 }}
+                    {{ $crop := ((.Param "cover.image.crop") | default "entropy") }}
+                    {{ $fit := ((.Param "cover.image.fit") | default "crop") }}
+                    {{ $src := (.Param "cover.image.url") }}
+                    {{ $srcset := (slice
+                    (dict "width" "640" "height" "360")
+                    (dict "width" "768" "height" "432")
+                    (dict "width" "1024" "height" "576")
+                    (dict "width" "1280" "height" "720")
+                    (dict "width" "1600" "height" "900")
+                    ) }}
+                  <picture>
+                    <source srcset='
+                  {{ range $i, $e := ($srcset) }}
+                  {{ if $i }},{{ end }}
+                  {{ ($src) }}?crop={{ ($crop) }}&amp;w={{ (.width) }}&amp;h={{ (.height) }}&amp;fit={{ ($fit) }}&amp;auto=format {{ (.width) }}w
+                  {{ end }}
+                  ' sizes="(min-width: 576px) 100vw"/>
+                    <img class="d-block w-100 h-100 rounded"
+                         src="{{ ($src) }}?crop={{ ($crop) }}&amp;w={{ ($width) }}&amp;h={{ ($height) }}&amp;fit={{ ($fit) }}&amp;auto=format"
+                         width="{{ ($width) }}" height="{{ ($height) }}"
+                         alt="" loading="lazy"/>
+                  </picture>
+                </div>
+              {{ end }}
+            <div class="node-title">
+              <h1 class="text-center">{{ (.Title) }}</h1>
+            </div>
+          </header>
+          <footer>
+            <ul class="list-inline text-center text-muted small">
+                {{ with (.Param "date") }}
+                  <li class="list-inline-item">
+                    <time datetime='{{ (.UTC.Format "2006-01-02T15:04:05Z07:00") }}' data-ext-fn="ext-date-local">
+                        {{ (.UTC.Format "2006/01/02 15:04:05 MST") }}
+                    </time>
+                  </li>
+                {{ end }}
+                {{ with (.Param "complexity") }}
+                    {{ with (eq . "0") }}
+                      <li class="list-inline-item">&bull;</li>
+                      <li title='{{ (i18n "complexity") }}: {{ (i18n "complexity-0") }}' class="list-inline-item text-success">
+                        <i class="far fa-face-smile fa-fw"></i>
+                      </li>
+                    {{ end }}
+                    {{ with (eq . "1") }}
+                      <li class="list-inline-item">&bull;</li>
+                      <li title='{{ (i18n "complexity") }}: {{ (i18n "complexity-1") }}' class="list-inline-item text-warning">
+                        <i class="far fa-face-meh fa-fw"></i>
+                      </li>
+                    {{ end }}
+                    {{ with (eq . "2") }}
+                      <li class="list-inline-item">&bull;</li>
+                      <li title='{{ (i18n "complexity") }}: {{ (i18n "complexity-2") }}' class="list-inline-item text-danger">
+                        <i class="far fa-face-frown fa-fw"></i>
+                      </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+          </footer>
+          <ul class="nav nav-tabs mb-3" id="{{ ($id_tabs) }}" data-ext-fn="ext-node-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button title='{{ (i18n "home") }}' class="nav-link active" id="tab-main-home" data-bs-toggle="tab" data-bs-target="#tab-pane-main-home" type="button" role="tab" aria-controls="tab-pane-main-home" aria-selected="true">
+                <i class="fas fa-home fa-fw"></i>
+              </button>
+            </li>
+              {{ if ($cfg.tab.info.enabled) }}
+                <li class="nav-item" role="presentation">
+                  <button title='{{ (i18n "info") }}' class="nav-link" id="tab-main-info" data-bs-toggle="tab" data-bs-target="#tab-pane-main-info" type="button" role="tab" aria-controls="tab-pane-main-info" aria-selected="false">
+                    <i class="fas fa-info fa-fw"></i>
+                  </button>
+                </li>
+              {{ end }}
+              {{ if (.IsTranslated) }}
+                <li class="nav-item" role="presentation">
+                  <button title='{{ (i18n "languages") }}' class="nav-link" id="tab-main-languages" data-bs-toggle="tab" data-bs-target="#tab-pane-main-languages" type="button" role="tab" aria-controls="tab-pane-main-languages" aria-selected="false">
+                    <i class="fas fa-language fa-fw"></i>
+                  </button>
+                </li>
+              {{ end }}
+              {{ if ($cfg.tab.share.enabled) }}
+                <li class="nav-item ms-auto" role="presentation">
+                  <button title='{{ (i18n "share") }}' class="nav-link" id="tab-main-share" data-bs-toggle="tab" data-bs-target="#tab-pane-main-share" type="button" role="tab" aria-controls="tab-pane-main-share" aria-selected="false">
+                    <i class="fas fa-share fa-fw"></i>
+                  </button>
+                </li>
+              {{ end }}
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane show active" id="tab-pane-main-home" role="tabpanel" aria-labelledby="tab-main-home" tabindex="0">
+              <div class="node-body">{{ (.Content) }}</div>
+            </div>
+              {{ if ($cfg.tab.info.enabled) }}
+                <div class="tab-pane" id="tab-pane-main-info" role="tabpanel" aria-labelledby="tab-main-info" tabindex="0">
+                  <div class="node-body">
+                    <div class="row row-cols-1 row-cols-lg-2 g-3">
+                        {{ if ($cfg.tab.info.categories.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/categories" .) }}
+                          </div>
+                        {{ end }}
+                        {{ if ($cfg.tab.info.tags.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/tags" .) }}
+                          </div>
+                        {{ end }}
+                        {{ if ($cfg.tab.info.authors.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/authors" .) }}
+                          </div>
+                        {{ end }}
+                        {{ if ($cfg.tab.info.related.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/related" .) }}
+                          </div>
+                        {{ end }}
+                        {{ if ($cfg.tab.info.meta.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/meta" .) }}
+                          </div>
+                        {{ end }}
+                        {{ if ($cfg.tab.info.stats.enabled) }}
+                          <div class="col">
+                              {{ (partial "module/node/tabs/info/stats" .) }}
+                          </div>
+                        {{ end }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+              {{ if (.IsTranslated) }}
+                <div class="tab-pane" id="tab-pane-main-languages" role="tabpanel" aria-labelledby="tab-main-languages" tabindex="0">
+                    {{ (partial "module/node/tabs/languages" .) }}
+                </div>
+              {{ end }}
+              {{ if ($cfg.tab.share) }}
+                <div class="tab-pane" id="tab-pane-main-share" role="tabpanel" aria-labelledby="tab-main-share" tabindex="0">
+                    {{ (partial "module/node/tabs/share" .) }}
+                </div>
+              {{ end }}
+          </div>
+        </article>
+      </div>
+    </div>
+
+{{ end }}

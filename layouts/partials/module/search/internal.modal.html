@@ -1,0 +1,36 @@
+{{ $cfg := (($.Site.Data.search.internal) | default "") }}
+
+{{ if ($cfg.enabled) }}
+  <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">{{ (i18n "search") }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ (i18n "close") }}"></button>
+        </div>
+        <div class="modal-body node-body">
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+              <form id="search-form" method="get" class="d-flex" autocomplete="off">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
+                  <input id="search-input" type="search" class="form-control" name="q" aria-label='{{ (i18n "search") }}'/>
+                </div>
+              </form>
+            </div>
+            <div class="col">
+              <div class="list-group d-none" id="search-results"></div>
+              <div id="search-help">
+                  {{ (partial "function/alert" (dict
+                  "type" "info"
+                  "icon" "fas fa-search"
+                  "msg" (i18n "alert.search_help")
+                  )) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

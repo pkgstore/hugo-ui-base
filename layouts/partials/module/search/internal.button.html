@@ -1,0 +1,7 @@
+{{ $cfg := (($.Site.Data.search.internal) | default "") }}
+
+{{ if ($cfg.enabled) }}
+  <a title='{{ (i18n "search") }}' class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#search-modal" aria-label='{{ (i18n "search") }}'>
+    <i class="fas fa-search fa-fw"></i>
+  </a>
+{{ end }}

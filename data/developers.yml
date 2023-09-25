@@ -1,0 +1,89 @@
+# -------------------------------------------------------------------------------------------------------------------- #
+# Developers.
+# -------------------------------------------------------------------------------------------------------------------- #
+# en:
+#
+#   company_01:
+#     weight: 10
+#     name: 'Example Development Company 01'
+#     address:
+#       - '143 Bowery, New York, NY 10002, USA'
+#     url:
+#       - 'https://example.com'
+#     email:
+#       - 'mail@example.com'
+#     phone:
+#       - '+71234445678'
+#
+#   company_02:
+#     weight: 20
+#     name: 'Example Development Company 02'
+#     address:
+#       - '143 Bowery, New York, NY 10002, USA'
+#     url:
+#       - 'https://example.com'
+#     email:
+#       - 'mail@example.com'
+#     phone:
+#       - '+71234445678'
+# -------------------------------------------------------------------------------------------------------------------- #
+
+ru:
+
+  v77:
+    weight: 10
+    name: 'Example 01'
+    address:
+      - '143 Bowery, New York, NY 10002, USA'
+    url:
+      - 'https://example01.com'
+    email:
+      - 'mail_01@example01.com'
+      - 'mail_02@example01.com'
+    phone:
+      - '+71234445678'
+      - '+71235556789'
+
+  KitsuneSolar:
+    weight: 20
+    name: 'Example 02'
+    address:
+      - '143 Bowery, New York, NY 10002, USA'
+    url:
+      - 'https://example02.com'
+    email:
+      - 'mail_01@example02.com'
+      - 'mail_02@example02.com'
+    phone:
+      - '+71234445678'
+      - '+71235556789'
+
+en:
+
+  v77:
+    weight: 10
+    name: 'Example 01'
+    address:
+      - '143 Bowery, New York, NY 10002, USA'
+    url:
+      - 'https://example01.com'
+    email:
+      - 'mail_01@example01.com'
+      - 'mail_02@example01.com'
+    phone:
+      - '+71234445678'
+      - '+71235556789'
+
+  KitsuneSolar:
+    weight: 20
+    name: 'Example 02'
+    address:
+      - '143 Bowery, New York, NY 10002, USA'
+    url:
+      - 'https://example02.com'
+    email:
+      - 'mail_01@example02.com'
+      - 'mail_02@example02.com'
+    phone:
+      - '+71234445678'
+      - '+71235556789'
