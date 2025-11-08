@@ -1,0 +1,7 @@
+<link rel="alternate" href="{{ ("/" | absURL) }}" hreflang="x-default">
+<link rel="alternate" href="{{ (.Permalink) }}" hreflang="{{ (.Lang) }}">
+{{ if (.IsTranslated) }}
+    {{ range (.Translations) }}
+      <link rel="alternate" href="{{ (.Permalink) }}" hreflang="{{ (.Lang) }}">
+    {{ end }}
+{{ end }}

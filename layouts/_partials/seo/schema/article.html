@@ -1,0 +1,23 @@
+{{ $image := ((index (.Params.images) 0) | absURL) }}
+
+{{ $article := (dict
+"@context" "https://schema.org"
+"@type" "Article"
+"mainEntityOfPage" (.Permalink)
+"headline" ((partial "seo/schema/data/title" .) | truncate 110)
+"description" (partial "seo/schema/data/description" .)
+"url" (.Permalink)
+"image" ($image)
+"author" (partial "seo/schema/data/author" .)
+"inLanguage" (partial "seo/schema/data/language" .)
+"wordCount" (.WordCount)
+"datePublished" (partial "seo/schema/data/date_published" .)
+"dateCreated" (partial "seo/schema/data/date_created" .)
+"dateModified" (partial "seo/schema/data/date_modified" .)
+"keywords" (partial "seo/schema/data/keywords" .)
+"publisher" (printf "%s%s" ("/" | absURL) ("#organization"))
+"pageStart" 1
+"pageEnd" 1
+) }}
+
+<script type="application/ld+json">{{ ((($article) | jsonify) | safeJS) }}</script>

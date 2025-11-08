@@ -1,0 +1,32 @@
+{{- /*
+Link with title in markdown.
+
+@returns {template.HTML}
+
+@examples
+
+  [Text](https://www.gohugo.io "Title")
+*/ -}}
+
+{{- $title := ((.Title) | default "") -}}
+{{- $href := ((.Destination) | safeURL) -}}
+{{- $text := ((.Text) | safeHTML) -}}
+
+{{- $viewer := "" -}}
+{{- $target := "_self" -}}
+{{- $rel := "" -}}
+
+{{- if (strings.HasPrefix (.Destination) "http") -}}
+    {{- $target = "_blank" -}}
+    {{- $rel = "noopener noreferrer" -}}
+    {{- $files := (slice ".doc" ".docx" ".xls" ".xlsx" ".ppt" ".pptx" ".odt" ".ods" ".odp") -}}
+    {{- range ($files) -}}
+        {{- with (strings.HasSuffix ($href) .) -}}
+            {{- $viewer = "https://view.officeapps.live.com/op/view.aspx?src=" -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+<a title="{{ ($title) }}" href="{{ ($viewer) }}{{ ($href) }}" target="{{ ($target) }}"
+   rel="{{ ($rel) }}">{{ ($text) }}</a>
+{{- /* This comment removes trailing newlines. */ -}}

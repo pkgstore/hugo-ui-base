@@ -1,0 +1,68 @@
+{{- /*
+This shortcode allows you to create a simulation of an OS terminal window.
+
+@param {string} os [linux|windows]
+@param {string} mode [root]
+
+@returns {template.HTML}
+
+@examples
+
+  ```terminal {os="windows"}
+  cd D:\Documents
+  ```
+
+  ```terminal {os="windows",mode="root"}
+  Dism /Get-ImageInfo /ImageFile:"C:\BuildFarm\WIM\install.wim"
+  ```
+
+  ```terminal {os="linux"}
+  bash favicon.sh png
+  ```
+
+  ```terminal {os="linux",mode="root"}
+  dd if=image.iso of=/dev/sdc bs=4M oflag=direct status=progress; sync
+  ```
+*/ -}}
+
+{{ $attr := (.Attributes) }}
+{{ $type := (.Type) }}
+{{ $inner := ((trim (.Inner) "\n\r") | chomp) }}
+{{ $ordinal := (.Ordinal) }}
+
+{{ $os := (($attr.os) | default "linux") }}
+{{ $mode := (($attr.mode) | default "user") }}
+{{ $lang := (($attr.lang) | default "text") }}
+
+{{ $cp := ((printf "clipboard-%s-%d" (delimit (shuffle (seq 11 99)) "") ($ordinal)) | md5) }}
+
+<div class="shortcode mb-3 shortcode-codeblock
+shortcode-codeblock-{{ ($ordinal) }} shortcode-codeblock-{{ ($type) }}
+{{ with ($os) }}shortcode-codeblock-{{ ($type) }}-{{ . }}{{ end }}
+{{ with ($os) }}shortcode-codeblock-{{ ($type) }}-{{ . }}{{ end }}{{ with ($mode) }}-{{ . }}{{ end }}">
+  <div class="card overflow-hidden" data-bs-theme="dark">
+    <div class="card-header">
+      <div class="d-flex align-items-center">
+        <div class="flex-shrink-0 {{ if (eq ($mode) "root") }}text-danger{{ end }}">
+          <i class="fas fa-terminal fa-fw"></i>
+        </div>
+        <div class="flex-grow-1 mx-2">
+          <h5 class="mb-0">{{ (i18n "terminal") }}</h5>
+        </div>
+        <div class="flex-shrink-0">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a class="d-block text-body" href="#"
+                 data-fn="clipboard" data-clipboard-target="#cp-{{ ($cp) }}"
+                 aria-label='{{ (i18n "copy") }}' role="button">
+                <i class="fas fa-copy fa-fw d-block"
+                   title='{{ (i18n "copy") }}'></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body p-0 overflow-auto" id="cp-{{ ($cp) }}">{{ (highlight ($inner) ($lang)) }}</div>
+  </div>
+</div>

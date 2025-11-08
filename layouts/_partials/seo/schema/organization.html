@@ -1,0 +1,31 @@
+{{ $address := (dict
+"@type" "PostalAddress"
+"addressLocality" (site.Params.organization.address.city)
+"addressRegion" (site.Params.organization.address.region)
+"addressCountry" (site.Params.organization.address.country)
+) }}
+
+{{ $contactPoint := (dict
+"@type" "ContactPoint"
+"contactType" (site.Params.organization.contacts.type)
+"email" (site.Params.organization.contacts.email)
+"telephone" (site.Params.organization.contacts.telephone)
+) }}
+
+{{ $organization := (dict
+"@context" "https://schema.org"
+"@type" "Organization"
+"@id" (printf "%s%s" ("/" | absURL) ("#organization"))
+"mainEntityOfPage" ("/" | absURL)
+"name" (site.Title)
+"legalName" (site.Title)
+"foundingDate" (site.Params.organization.foundingDate)
+"url" ("/" | absURL)
+"logo" (partial "seo/schema/data/logo" .)
+"description" ((site.Params.description) | plainify)
+"address" ($address)
+"contactPoint" ($contactPoint)
+"sameAs" (site.Params.organization.sameAs)
+) }}
+
+<script type="application/ld+json">{{ ((($organization) | jsonify) | safeJS) }}</script>

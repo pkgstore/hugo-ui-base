@@ -1,0 +1,20 @@
+<section class="card node-tags h-100">
+  <div class="card-body">
+    <h5 class="card-title">{{ (i18n "tags") }}</h5>
+      {{ if (.Params.tags) }}
+        <ul class="list-inline">
+            {{ range (.GetTerms "tags") }}
+              <li class="list-inline-item">
+                <a href="{{ (.Permalink) }}">#{{ ((.Title) | lower) }}</a>
+              </li>
+            {{ end }}
+        </ul>
+      {{ else }}
+          {{ (partial "alert" (dict
+          "type" "warning"
+          "icon" "fas fa-tags"
+          "msg" (i18n "alert.tags_not_found")
+          )) }}
+      {{ end }}
+  </div>
+</section>

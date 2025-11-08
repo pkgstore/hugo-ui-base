@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+    {{ $pages := (where (site.RegularPages) "Section" "in" (site.Params.home.sections)) }}
+    {{ $paginator := (.Paginate ($pages)) }}
+
+    <div class="row row-cols-1 row-cols-xl-2 g-3">
+        {{ range ($paginator.Pages) }}
+          <div class="col">
+              {{ (.Render "view") }}
+          </div>
+        {{ end }}
+    </div>
+
+    {{ (partial "pagination" .) }}
+
+{{ end }}

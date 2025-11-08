@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+    {{ $fontMin := 1.0 }}
+    {{ $fontMax := 3.0 }}
+    {{ $tags := (site.Taxonomies.tags) }}
+    {{ $min := (len (index $tags.ByCount.Reverse 0).Pages) }}
+    {{ $max := (add (len (index $tags.ByCount 0).Pages) 1) }}
+
+    <div class="article">
+      <div class="node-body">
+        <ul class="list-inline">
+            {{ range ($tags) }}
+                {{ $weight := (div (sub (math.Log (.Count)) (math.Log ($min))) (sub (math.Log ($max)) (math.Log ($min)))) }}
+                {{ $fontSize := (add ($fontMin) (mul (sub ($fontMax) ($fontMin)) ($weight))) }}
+                <li class="list-inline-item">
+                  <a href="{{ (.Page.RelPermalink) }}" style="font-size: {{ ($fontSize) }}rem;">
+                      {{ ((.Page.Title) | lower) }}
+                    <sup class="text-body-secondary">{{ (.Count) }}</sup>
+                  </a>
+                </li>
+            {{ end }}
+        </ul>
+      </div>
+    </div>
+
+{{ end }}

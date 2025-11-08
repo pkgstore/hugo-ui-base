@@ -1,0 +1,55 @@
+.highlight {
+  .chroma {
+    @import 'syntax.chroma.theme';
+    color: #abb2bf;
+
+    .lnt, .line, .hl {
+      display: flex;
+
+      .cl {
+        flex-grow: 1;
+      }
+    }
+
+    .line {
+      padding: 0 1rem 0 1rem;
+    }
+
+    .lnt {
+      -webkit-user-select: none;
+      padding-left: 1rem;
+      user-select: none;
+    }
+
+    // -------------------------------------------------------------------------------------------------------------- //
+    // Chroma: Table.
+    // -------------------------------------------------------------------------------------------------------------- //
+
+    table {
+      table-layout: fixed;
+      width: 100%;
+
+      tr {
+        td {
+          vertical-align: top;
+
+          &:first-child {
+            border-right: 1px solid var(--bs-dark-border-subtle);
+            padding: 0;
+            width: 4rem;
+          }
+
+          &:last-child {
+            width: 100%;
+            padding: 0;
+          }
+
+          pre {
+            border-radius: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}

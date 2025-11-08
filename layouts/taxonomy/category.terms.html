@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+    {{ $section := (.Section) }}
+    {{ $cfg := (index (site.Params.section) ($section)) }}
+
+    <div class="row row-cols-1 row-cols-xl-{{ (($cfg.grid.cols) | default 2) }} g-3">
+        {{ range $k, $v := (.Data.Terms.Alphabetical) }}
+            {{ with (site.GetPage (printf "/%s/%s" ($section) (.Name))) }}
+              <div class="col">
+                  {{ (.Render "view") }}
+              </div>
+            {{ end }}
+        {{ end }}
+    </div>
+
+{{ end }}

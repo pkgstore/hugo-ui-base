@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+    {{ $pages := (where (site.RegularPages) "Section" "in" (site.Params.archive.sections)) }}
+
+    {{ if ($pages) }}
+        {{ range ($pages.GroupByDate "2006") }}
+          <div class="row mb-3">
+            <div class="col">
+              <article>
+                <h2>{{ (.Key) }}</h2>
+                <div class="node-body">
+                  <ul class="list-unstyled">
+                      {{ range (.Pages) }}
+                        <li class="d-flex">
+                          <div class="me-3"><code>{{ (.Date.UTC.Format "01/02") }}</code></div>
+                          <div class="flex-grow-1"><a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a></div>
+                        </li>
+                      {{ end }}
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        {{ end }}
+    {{ end }}
+
+{{ end }}

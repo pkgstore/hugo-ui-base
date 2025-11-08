@@ -1,0 +1,12 @@
+<link rel="manifest" type="application/manifest+json" href="{{ ("manifest.json" | absLangURL) }}"
+      title="{{ (site.Title) }}">
+<link rel="search" type="application/opensearchdescription+xml" href="{{ ("opensearch.xml" | absLangURL) }}"
+      title="{{ (site.Title) }}">
+{{ range (.AlternativeOutputFormats) }}
+  <link rel="{{ (.Rel) }}" type="{{ (.MediaType.Type) }}" href="{{ ((.Permalink) | safeURL) }}"
+        title="{{ (site.Title) }}">
+{{ end }}
+
+{{ with (site.Title) }}
+  <meta name="application-name" content="{{ (site.Title) }}">
+{{ end }}

@@ -1,0 +1,189 @@
+body {
+  .node {
+    &-body {
+      .shortcode {
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // Common.
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        .btn {
+        }
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // Quote.
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        &-quote {
+          border-left: .5rem solid var(--bs-gray-200);
+          padding-left: 1rem;
+
+          blockquote {
+            border-left: unset;
+            padding-left: unset;
+          }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // Spoiler (inline).
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        &-spi {
+          cursor: pointer;
+
+          span {
+            &:last-child {
+              opacity: .6;
+            }
+          }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // CodeBlock.
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        &-codeblock {
+          pre {
+            margin: 0;
+          }
+
+          .position-sticky {
+            top: 4rem;
+          }
+
+          &-terminal {
+            pre {
+              background-color: unset;
+              border-radius: unset;
+
+              > code {
+                .line:last-child {
+                  .cl:after {
+                    content: ' _ ';
+                    opacity: 0;
+                    animation: cursor 1s infinite;
+                  }
+                }
+              }
+
+              @keyframes cursor {
+                0% {
+                  opacity: 0;
+                }
+                40% {
+                  opacity: 0;
+                }
+                50% {
+                  opacity: 1;
+                }
+                90% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                }
+              }
+            }
+
+            &-linux {
+              pre {
+                > code {
+                  .line:first-child:before {
+                    content: 'user@host ~ % ';
+                    color: var(--bs-primary);
+                  }
+                }
+              }
+
+              &-root {
+                pre {
+                  > code {
+                    .line:first-child:before {
+                      content: 'root@host ~ # ';
+                      color: var(--bs-danger);
+                    }
+                  }
+                }
+              }
+            }
+
+            &-windows {
+              pre {
+                > code {
+                  .line:first-child:before {
+                    content: 'C:\\User> ';
+                    color: var(--bs-primary);
+                  }
+                }
+              }
+
+              &-root {
+                pre {
+                  > code {
+                    .line:first-child:before {
+                      content: 'C:\\Admin> ';
+                      color: var(--bs-danger);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // File.
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        &-file {
+          pre {
+            margin: 0;
+          }
+
+          .card {
+            &-header {
+              ul {
+                li:nth-child(1) {
+                  i:nth-child(1) {
+                    display: none !important;
+                  }
+
+                  i:nth-child(2) {
+                    display: block !important;
+                  }
+
+                  .collapsed {
+                    i:nth-child(1) {
+                      display: block !important;
+                    }
+
+                    i:nth-child(2) {
+                      display: none !important;
+                    }
+                  }
+                }
+              }
+            }
+
+            &-body {
+              //max-height: calc(100vh - 10rem);
+            }
+          }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------- //
+        // GitHub Repository.
+        // ---------------------------------------------------------------------------------------------------------- //
+
+        &-gh-repo {
+          .gh-repo {
+            &-emoji {
+              width: 1rem;
+              height: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+{{ $title := (partial "head/title" .) }}
+<title>{{ ($title) }}</title>
+<meta name="title" content="{{ ($title) }}">
+
+{{ $description := (partial "head/description" .) }}
+<meta name="description" content="{{ ($description) }}">
+
+{{ (partial "head/keywords" .) }}
+{{ (partial "head/preconnect" .) }}
+{{ (partial "head/theme" .) }}
+{{ (partial "head/css" .) }}
+{{ (partial "head/icons" .) }}
+{{ (partial "head/canonical" .) }}
+{{ (partial "head/lang" .) }}
+{{ (partial "head/apps" .) }}
+{{ (partial "seo/common" .) }}
+{{ (partial "seo/dc" .) }}

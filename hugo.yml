@@ -1,0 +1,7 @@
+baseURL: 'https://metaplex.ru/'
+languageCode: 'ru-RU'
+module:
+  hugoVersion:
+    extended: true
+    min: '0.150.0'
+title: 'UI-Base'

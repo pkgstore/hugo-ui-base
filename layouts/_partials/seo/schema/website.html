@@ -1,0 +1,31 @@
+{{ $WPHeader := (dict
+"@context" "https://schema.org"
+"@type" "WPHeader"
+"headline" "headline-string"
+"cssSelector" "#site-header"
+) }}
+
+{{ $WPFooter := (dict
+"@context" "https://schema.org"
+"@type" "WPFooter"
+"cssSelector" "#site-footer"
+"copyrightHolder" (printf "%s%s" ("/" | absURL) ("#organization"))
+"publisher" (printf "%s%s" ("/" | absURL) ("#organization"))
+"copyrightYear" (now.UTC.Format "2006")
+) }}
+
+{{ $WebSite := (dict
+"@context" "https://schema.org"
+"@type" "WebSite"
+"@id" (printf "%s%s" ("/" | absURL) ("#website"))
+"mainEntityOfPage" ("/" | absURL)
+"name" (site.Title)
+"url" ("/" | absURL)
+"description" (site.Params.description)
+"inLanguage" (partial "seo/schema/data/language" .)
+"publisher" (printf "%s%s" ("/" | absURL) ("#organization"))
+"keywords" (partial "seo/schema/data/keywords.website" .)
+"hasPart" (slice ($WPHeader) ($WPFooter))
+) }}
+
+<script type="application/ld+json">{{ ((($WebSite) | jsonify) | safeJS) }}</script>

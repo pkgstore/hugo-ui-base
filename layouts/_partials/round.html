@@ -1,0 +1,7 @@
+{{ $number := ((.number) | float) }}
+{{ $precision := ((.precision) | default 2) }}
+{{ $ratio := (math.Pow 10 ($precision)) }}
+{{ $product := (math.Product ($ratio) ($number)) }}
+{{ $round := (div (math.Round ($product)) ($ratio)) }}
+
+{{ return ($round) }}

@@ -1,0 +1,30 @@
+{{ $position := 0 }}
+{{ $data := (newScratch) }}
+
+{{ ($data.Add "itemListElement" (slice)) }}
+{{ range (.Ancestors.Reverse) }}
+    {{ $position = (add ($position) 1) }}
+    {{ ($data.Add "itemListElement" (dict
+    "@type" "ListItem"
+    "position" ($position)
+    "item" (dict
+    "@id" (.Permalink)
+    "name" (.Title)
+    ))) }}
+{{ end }}
+
+{{ ($data.Add "itemListElement" (dict
+"@type" "ListItem"
+"position" (add ($position) 1)
+"item" (dict
+"@id" (.Permalink)
+"name" (.Title)
+))) }}
+
+{{ $breadcrumb := (dict
+"@context" "https://schema.org"
+"@type" "BreadcrumbList"
+"itemListElement" ($data.Get "itemListElement")
+) }}
+
+<script type="application/ld+json">{{ ((($breadcrumb) | jsonify) | safeJS) }}</script>

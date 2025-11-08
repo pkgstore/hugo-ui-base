@@ -1,0 +1,139 @@
+# -------------------------------------------------------------------------------------------------------------------- #
+# GENERAL
+# -------------------------------------------------------------------------------------------------------------------- #
+
+about: { other: 'About' }
+answer_count: { one: '{{ . }} answer', few: '{{ . }} answers', many: '{{ . }} answers', other: '{{ . }} answers' }
+archive: { other: 'Archive' }
+articles: { other: 'Articles' }
+authors: { other: 'Authors' }
+categories: { other: 'Categories' }
+changelog: { other: 'Changelog' }
+close: { other: 'Close' }
+comments: { other: 'Comments' }
+complexity-0: { other: 'Easy' }
+complexity-1: { other: 'Medium' }
+complexity-2: { other: 'Hard' }
+complexity: { other: 'Level of difficulty' }
+contacts: { other: 'Contacts' }
+copy: { other: 'Copy' }
+developers: { other: 'Developers' }
+download: { other: 'Download' }
+draft: { other: 'Draft' }
+egg: { other: 'Oops!' }
+email: { other: 'Email' }
+file_id: { other: 'File ID' }
+home: { other: 'Home' }
+info: { other: 'Information' }
+kB: { other: 'kB' }
+languages: { other: 'Languages' }
+license: { other: 'License' }
+license_header: { other: 'License header' }
+license_text: { other: 'License text' }
+logo: { other: 'Logotype' }
+meta: { other: 'Meta' }
+minutes: { other: 'min.' }
+reading_time: { other: 'Reading time' }
+search: { other: 'Search' }
+search_bing: { other: 'Bing Search' }
+search_google: { other: 'Google Search' }
+search_internal: { other: 'Internal search' }
+search_yandex: { other: 'Yandex Search' }
+see_also: { other: 'See also' }
+share: { other: 'Share' }
+site_resize: { other: 'Resize site' }
+size: { other: 'Size' }
+social_networks: { other: 'Social networks' }
+source_code: { other: 'Source code' }
+sources: { other: 'Sources' }
+stats: { other: 'Statistics' }
+sys_path: { other: 'System path' }
+tags: { other: 'Tags' }
+terminal: { other: 'Terminal' }
+toc: { other: 'Contents' }
+toggle_navigation: { other: 'Toggle navigation' }
+type: { other: 'Type' }
+uuid: { other: 'UUID' }
+word_count: { other: 'Word count' }
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# COLOR MODES
+# -------------------------------------------------------------------------------------------------------------------- #
+
+theme:
+  auto: { other: 'Auto' }
+  dark: { other: 'Dark' }
+  label: { other: 'Toggle theme' }
+  light: { other: 'Light' }
+  theme: { other: 'UI Theme' }
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# BROWSER CONSOLE
+# -------------------------------------------------------------------------------------------------------------------- #
+
+console:
+  about_me: { other: 'About me' }
+  buy_me: { other: 'Buy me a' }
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# ALERTS
+# -------------------------------------------------------------------------------------------------------------------- #
+
+alert:
+  authors_not_found: { other: 'Authors not found.' }
+  categories_not_found: { other: 'Categories not found.' }
+  draft: { other: 'The material is a draft. You can use the information in the material only at your own peril and risk.' }
+  in_dev: { other: 'Information on this page is under revision. Information may be added and changed.' }
+  in_history: { other: 'This material is an artifact of the past. It was found in old works and teleported here to be preserved in history.' }
+  license_deprecated_id: { other: 'License ID is deprecated!' }
+  license_fsf_libre: { other: 'License is considered free by the FSF.' }
+  license_osi_approved: { other: 'License is OSI-approved.' }
+  related_not_found: { other: 'Related not found.' }
+  tags_not_found: { other: 'Tags not found.' }
+
+  opinion:
+    other: |
+      The information on this page may include:
+      
+      - subjective opinion of the author and value judgment;
+      - scientific research work for personal purposes.
+      
+      The reader is obliged to use the information received exclusively for legal purposes
+      that do not contradict moral principles and generally accepted values.
+
+  search_help:
+    other: |
+      Fuzzy search (rough string matching) is used.
+      This is a method for finding strings that approximately match search pattern.
+      
+      Search results are sorted by exact match to search pattern.
+      Search results that most closely match a query are at the top, approximate results are at bottom.
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# SOCIAL
+# -------------------------------------------------------------------------------------------------------------------- #
+
+social:
+  bitbucket: { other: 'BitBucket' }
+  blogger: { other: 'Blogger' }
+  digg: { other: 'Digg' }
+  facebook: { other: 'Facebook' }
+  github: { other: 'GitHub' }
+  gitlab: { other: 'GitLab' }
+  hackernews: { other: 'Hacker News' }
+  instagram: { other: 'Instagram' }
+  linkedin: { other: 'LinkedIn' }
+  livejournal: { other: 'LiveJournal' }
+  ok: { other: 'OK' }
+  patreon: { other: 'Patreon' }
+  pinterest: { other: 'Pinterest' }
+  pocket: { other: 'Pocket' }
+  reddit: { other: 'Reddit' }
+  skype: { other: 'Skype' }
+  telegram: { other: 'Telegram' }
+  tumblr: { other: 'Tumblr' }
+  twitter: { other: 'Twitter' }
+  vk: { other: 'VK' }
+  whatsapp: { other: 'WhatsApp' }
+  wordpress: { other: 'WordPress' }
+  youtube: { other: 'YouTube' }

@@ -1,0 +1,11 @@
+{{ $uiTheme := (((resources.Get "js/theme.js") | minify) | resources.Fingerprint) }}
+<script src="{{ ($uiTheme.RelPermalink) }}" integrity="{{ ($uiTheme.Data.Integrity) }}"
+        crossorigin="anonymous"></script>
+
+{{ $theme := (site.Params.ui.color.theme) }}
+{{ with ($theme.light) }}
+  <meta name="theme-color" content="{{ . }}" media="(prefers-color-scheme: light)">
+{{ end }}
+{{ with ($theme.dark) }}
+  <meta name="theme-color" content="{{ . }}" media="(prefers-color-scheme: dark)">
+{{ end }}

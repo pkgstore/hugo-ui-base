@@ -1,0 +1,93 @@
+body {
+  .font {
+    &-base {
+      @include font-base();
+    }
+
+    &-cond {
+      @include font-cond();
+    }
+
+    &-mono {
+      @include font-mono();
+    }
+
+    &-serif {
+      @include font-serif();
+    }
+
+    &-brand {
+      @include font-brand();
+    }
+  }
+}
+
+body {
+  @for $i from 1 through 6 {
+    h#{$i},
+    .h#{$i} {
+      @include font-cond();
+    }
+  }
+}
+
+body {
+  .node {
+    &-body {
+      @include font-serif();
+
+      blockquote {
+        border-left: .5rem solid var(--bs-gray-200);
+        padding-left: 1rem;
+      }
+
+      kbd {
+        @include font-mono();
+      }
+
+      code {
+        @include font-mono();
+        background-color: rgba(var(--bs-danger-rgb), 5%);
+        border-radius: var(--bs-border-radius-sm);
+        padding: 0 .3rem;
+        user-select: all;
+      }
+
+      pre {
+        @include font-mono();
+        border-radius: var(--bs-border-radius);
+        display: flex;
+        padding: 1rem;
+        scrollbar-width: thin;
+
+        > code {
+          background: unset;
+          flex-grow: 1;
+          line-height: 2;
+          padding: 0;
+          user-select: auto;
+          white-space: pre;
+        }
+      }
+
+      .figure {
+        &.is-table {
+          display: inline-table;
+
+          .figure-caption {
+            display: table-caption;
+            caption-side: bottom;
+          }
+        }
+      }
+    }
+
+    &-source {
+      pre {
+        > code {
+          white-space: pre-wrap;
+        }
+      }
+    }
+  }
+}

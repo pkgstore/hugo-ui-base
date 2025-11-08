@@ -1,0 +1,7 @@
+{{ $data := (newScratch) }}{{ ($data.Add "keywords" (slice)) }}
+{{ if ($.IsPage) }}
+    {{ range ((.GetTerms "tags") | first 20) }}{{ ($data.Add "keywords" (.Title)) }}{{ end }}
+{{ else }}
+    {{ range ((site.Taxonomies.tags.ByCount) | first 20) }}{{ ($data.Add "keywords" (.Page.Title)) }}{{ end }}
+{{ end }}
+<meta name="keywords" content="{{ (((delimit (($data.Get "keywords") | uniq) ",") | truncate 250) | lower) }}">

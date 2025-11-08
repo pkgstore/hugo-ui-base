@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{{ $lang := ((site.LanguageCode) | default "en-US") }}
+{{ $type := ((.Type) | default "") }}
+{{ $home := "" }}{{ $node := "" }}{{ $page := "" }}
+{{ if (.IsHome) }}{{ $home = "is-home" }}{{ end }}
+{{ if (.IsNode) }}{{ $node = "is-node" }}{{ end }}
+{{ if (.IsPage) }}{{ $page = "is-page" }}{{ end }}
+
+<html class="h-100" dir="ltr" lang="{{ ($lang) }}" data-bs-theme="auto"
+      prefix="og: http://ogp.me/ns#
+      article: http://ogp.me/ns/article#
+      profile: http://ogp.me/ns/profile#
+      fb: http://ogp.me/ns/fb#">
+<head>{{ (partial "head" .) }}</head>
+<body class="d-flex flex-column h-100 {{ ($home) }} {{ ($node) }} {{ ($page) }} type-{{ ($type) }}">
+<header id="site-header">{{ (partial "header" .) }}</header>
+<main class="wrapper flex-shrink-0" id="site-main">
+  <div class="section py-3">
+    <div class="container">
+        {{ (partial "breadcrumb" .) }}
+        {{ block "main" . }}{{ end }}
+    </div>
+  </div>
+</main>
+<footer class="mt-auto border-top bg-body-tertiary" id="site-footer">{{ (partial "footer" .) }}</footer>
+{{ (partial "search/modal" .) }}
+{{ (partial "head/js" .) }}
+{{ (partial "seo/schema" .) }}
+</body>
+</html>

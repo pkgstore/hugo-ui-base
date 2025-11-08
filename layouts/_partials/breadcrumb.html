@@ -1,0 +1,18 @@
+{{ $cfg := (site.Params.breadcrumb) }}
+{{ $divider := (($cfg.divider) | default "/") }}
+{{ $iconHome := (($cfg.icon.name) | default "fas fa-home") }}
+
+<nav style="--bs-breadcrumb-divider:'{{ ($divider) }}';" class="small" aria-label="breadcrumb">
+  <ol class="breadcrumb p-2 rounded bg-body-tertiary">
+      {{ range (.Ancestors.Reverse) }}
+        <li class="breadcrumb-item">
+          <a href="{{ (.RelPermalink) }}" aria-label="{{ ((.Title) | plainify) }}">
+              {{ if (.IsHome) }}<i class="{{ ($iconHome) }} fa-fw"></i>{{ else }}{{ (.Title) }}{{ end }}
+          </a>
+        </li>
+      {{ end }}
+    <li class="breadcrumb-item active">
+        {{ if (.IsHome) }}<i class="{{ ($iconHome) }} fa-fw"></i>{{ else }}{{ (.Title) }}{{ end }}
+    </li>
+  </ol>
+</nav>

@@ -1,0 +1,73 @@
+{{ $data := (newScratch) }}
+
+{{ ($data.Add "authors" (slice)) }}
+{{ range (.GetTerms "authors") }}
+    {{ ($data.Add "authors" (dict
+    "name" (.Title)
+    "url" (.Permalink)
+    )) }}
+{{ end }}
+
+{{ ($data.Add "categories" (slice)) }}
+{{ range (.GetTerms "categories") }}
+    {{ ($data.Add "categories" (dict
+    "name" (.Title)
+    "url" (.Permalink)
+    )) }}
+{{ end }}
+
+{{ ($data.Add "tags" (slice)) }}
+{{ range (.GetTerms "tags") }}
+    {{ ($data.Add "tags" (dict
+    "name" ((.Title) | lower)
+    "url" (.Permalink)
+    )) }}
+{{ end }}
+
+{{ $date := (dict
+"created" (.Page.PublishDate.UTC.Format "2006-01-02T15:04:05Z07:00")
+"published" (.Page.PublishDate.UTC.Format "2006-01-02T15:04:05Z07:00")
+"modified" (.Page.Lastmod.UTC.Format "2006-01-02T15:04:05Z07:00")
+) }}
+
+{{ $meta := (dict
+"type" (.Page.Type)
+"license" (.Page.Params.license)
+"fid" (.File.UniqueID)
+"uuid" (.Page.Params.uuid)
+"sha1" (((.Page.Plain) | chomp) | sha1)
+"word_count" (.Page.WordCount)
+"read_time" (.Page.ReadingTime)
+) }}
+
+{{ $content := (dict
+"plain" (((.Page.Plain) | chomp) | base64Encode)
+) }}
+
+{{ $site := (dict
+"title" (site.Title)
+"description" (site.Params.description)
+"url" ("/" | absURL)
+"manifest" ("manifest.json" | absLangURL)
+"rss" ("index.xml" | absLangURL)
+) }}
+
+{{ $page := (dict
+"title" ((.Page.Title) | plainify)
+"images" (.Page.Params.images)
+"description" (((((.Page.Description) | default (.Page.Summary)) | plainify) | chomp) | base64Encode)
+"content" $content
+"authors" ($data.Get "authors")
+"categories" ($data.Get "categories")
+"tags" ($data.Get "tags")
+"url" (.Page.Permalink)
+"date" ($date)
+"meta" ($meta)
+) }}
+
+{{ $single := (dict
+"site" ($site)
+"page" ($page)
+) }}
+
+{{ (($single) | jsonify) }}

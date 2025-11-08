@@ -1,0 +1,6 @@
+{{ $title := "" }}
+{{ with ((or (.Title) (site.Title) (site.Params.title)) | plainify) }}
+    {{ $title = (printf "%s / %s" . (site.Title)) }}
+{{ end }}
+
+{{ return ($title) }}

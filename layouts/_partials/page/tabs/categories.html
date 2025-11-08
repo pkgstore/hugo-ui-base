@@ -1,0 +1,20 @@
+<section class="card node-categories h-100">
+  <div class="card-body">
+    <h5 class="card-title">{{ (i18n "categories") }}</h5>
+      {{ if (.Params.categories) }}
+        <ul class="list-inline">
+            {{ range (.GetTerms "categories") }}
+              <li class="list-inline-item">
+                <a href="{{ (.Permalink) }}">{{ (.Title) }}</a>
+              </li>
+            {{ end }}
+        </ul>
+      {{ else }}
+          {{ (partial "alert" (dict
+          "type" "warning"
+          "icon" "fas fa-folder-open"
+          "msg" (i18n "alert.categories_not_found")
+          )) }}
+      {{ end }}
+  </div>
+</section>

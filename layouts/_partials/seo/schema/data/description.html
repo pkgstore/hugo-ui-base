@@ -1,0 +1,6 @@
+{{ $description := "" }}
+{{ with (((or (.Description) (.Summary) (site.Params.description)) | plainify) | htmlUnescape) }}
+    {{ $description = (trim . "\n\r\t ") }}
+{{ end }}
+
+{{ return ($description) }}

@@ -1,0 +1,8 @@
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+
+{{ with (.GetTerms "authors") }}
+    {{ range . }}
+      <meta property="article:author" content="{{ (.Title) }}">
+    {{ end }}
+{{ end }}

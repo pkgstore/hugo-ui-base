@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+    {{ $section := (.Section) }}
+    {{ $cfg := (index (site.Params.section) ($section)) }}
+    {{ $coverSize := (($cfg.cover.size) | default "6rem") }}
+    {{ $avatarSize := (($cfg.cover.avatar.size) | default "128") }}
+
+    <div class="row row-cols-1 row-cols-xl-{{ (($cfg.grid.cols) | default 2) }} g-3">
+        {{ range $k, $v := (.Data.Terms.Alphabetical) }}
+            {{ $name := (.Name) }}{{ $count := (.Count) }}
+            {{ with (site.GetPage (printf "/%s/%s" ($section) ($name))) }}
+                {{ $email := ((.Params.info.email) | default ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+                {{ $avatarID := (($email) | md5) }}
+                <div class="col">
+                  <article class="d-flex">
+                    <div class="flex-shrink-0">
+                      <div class="node-cover">
+                        <a class="d-flex justify-content-center align-items-center rounded bg-body-tertiary link-secondary"
+                           href="{{ (.RelPermalink) }}" aria-label="{{ ((.Title) | plainify) }}"
+                           style="width: {{ ($coverSize) }}; height: {{ ($coverSize) }};">
+                          <img class="img-fluid rounded"
+                               src='https://gravatar.com/avatar/{{ ($avatarID) }}?s={{ ($avatarSize) }}&amp;d=monsterid'
+                               alt="Avatar" loading="lazy">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h4 class="h5 mt-0">
+                        <a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a>
+                        <sup class="text-body-secondary">{{ ($count) }}</sup>
+                      </h4>
+                      <div class="node-body">{{ (.Content) }}</div>
+                    </div>
+                  </article>
+                </div>
+            {{ end }}
+        {{ end }}
+    </div>
+
+{{ end }}

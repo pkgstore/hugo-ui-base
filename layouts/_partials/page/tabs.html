@@ -1,0 +1,34 @@
+{{ $cfg := (site.Params.page) }}
+{{ $tabsID := ((printf "node-tabs-%s" (.File.UniqueID)) | md5) }}
+{{ $changelog := (path.Join (.File.Dir) "changelog.md") }}
+
+<ul class="nav nav-tabs mb-3" id="node-tabs-{{ ($tabsID) }}" data-fn="node-tabs" role="tablist">
+    {{ (partial "page/tabs/home_0" .) }}
+    {{ if (.Resources.Match "changelog.md") }}
+        {{ (partial "page/tabs/changelog_0" .) }}
+    {{ end }}
+    {{ if ($cfg.tabs.info.enabled) }}
+        {{ (partial "page/tabs/info_0" .) }}
+    {{ end }}
+    {{ if (.IsTranslated) }}
+        {{ (partial "page/tabs/languages_0" .) }}
+    {{ end }}
+    {{ if ($cfg.tabs.share.enabled) }}
+        {{ (partial "page/tabs/share_0" .) }}
+    {{ end }}
+</ul>
+<div class="tab-content">
+    {{ (partial "page/tabs/home_1" .) }}
+    {{ with (.Resources.Match "changelog.md") }}
+        {{ (partial "page/tabs/changelog_1" .) }}
+    {{ end }}
+    {{ if ($cfg.tabs.info.enabled) }}
+        {{ (partial "page/tabs/info_1" .) }}
+    {{ end }}
+    {{ if (.IsTranslated) }}
+        {{ (partial "page/tabs/languages_1" .) }}
+    {{ end }}
+    {{ if ($cfg.tabs.share) }}
+        {{ (partial "page/tabs/share_1" .) }}
+    {{ end }}
+</div>

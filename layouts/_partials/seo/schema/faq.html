@@ -1,0 +1,33 @@
+{{ $data := (newScratch) }}
+
+{{ ($data.Add "suggestedAnswer" (slice)) }}
+{{ with (.Resources.Match "answer.*.md") }}
+    {{ range . }}
+        {{ ($data.Add "suggestedAnswer" (dict
+        "@type" "Answer"
+        "text" ((.Plain) | chomp)
+        "inLanguage" (partial "seo/schema/data/language" .)
+        "url" (.Permalink)
+        )) }}
+    {{ end }}
+{{ end }}
+
+{{ $qapage := (dict
+"@context" "https://schema.org"
+"@type" "QAPage"
+"mainEntity" (dict
+"@type" "Question"
+"name" (.Title)
+"text" ((.Plain) | chomp)
+"inLanguage" (partial "seo/schema/data/language" .)
+"datePublished" (partial "seo/schema/data/date_published" .)
+"dateCreated" (partial "seo/schema/data/date_created" .)
+"dateModified" (partial "seo/schema/data/date_modified" .)
+"keywords" (partial "seo/schema/data/keywords" .)
+"answerCount" ((.Resources.Match "answer_*.md") | len)
+"suggestedAnswer" ($data.Get "suggestedAnswer")
+)
+"publisher" (printf "%s%s" ("/" | absURL) ("#organization"))
+) }}
+
+<script type="application/ld+json">{{ ((($qapage) | jsonify) | safeJS) }}</script>

@@ -1,0 +1,32 @@
+{{ $cfg := (index (site.Params.section) (.Section)) }}
+{{ $coverSize := (($cfg.cover.size) | default "6rem") }}
+{{ $iconSize := (($cfg.cover.icon.size) | default "2x") }}
+{{ $iconID := ((.Params.icon) | default ($cfg.cover.icon.name)) }}
+{{ $truncate := (($cfg.summary.truncate) | default "200") }}
+
+<article class="node-{{ (.Type) }}">
+  <div class="d-flex overflow-hidden">
+    <div class="flex-shrink-0 d-none d-md-block me-3">
+      <div class="node-cover">
+        <a title="{{ ((.Title) | plainify) }}"
+           class="d-flex justify-content-center align-items-center rounded bg-body-tertiary link-secondary p-1"
+           href="{{ (.RelPermalink) }}" aria-label="{{ ((.Title) | plainify) }}"
+           style="width: {{ ($coverSize) }}; height: {{ ($coverSize) }};">
+          <i class="{{ ($iconID) }} fa-fw fa-{{ ($iconSize) }}"></i>
+        </a>
+      </div>
+    </div>
+    <div class="flex-grow-1 overflow-hidden">
+      <header>
+        <div class="node-title">
+          <h2 class="h5">
+            <a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a>
+          </h2>
+        </div>
+      </header>
+      <div class="node-body">
+          {{ (.Summary | truncate ($truncate)) }}
+      </div>
+    </div>
+  </div>
+</article>
