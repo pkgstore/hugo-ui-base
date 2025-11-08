@@ -1,9 +1,10 @@
 {{ define "main" }}
 
-    {{ $pages := (where (site.RegularPages) "Section" "in" (site.Params.home.sections)) }}
+    {{ $cfg := (index (site.Params.section) "home") }}
+    {{ $pages := (where (site.RegularPages) "Section" "in" ($cfg.content)) }}
     {{ $paginator := (.Paginate ($pages)) }}
 
-    <div class="row row-cols-1 row-cols-xl-2 g-3">
+    <div class="row row-cols-1 row-cols-xl-{{ (($cfg.grid.cols) | default 2) }} g-3">
         {{ range ($paginator.Pages) }}
           <div class="col">
               {{ (.Render "view") }}

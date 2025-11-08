@@ -1,6 +1,7 @@
 {{ define "main" }}
 
-    {{ $pages := (where (site.RegularPages) "Section" "in" (site.Params.archive.sections)) }}
+    {{ $cfg := (index (site.Params.section) (.Section)) }}
+    {{ $pages := (where (site.RegularPages) "Section" "in" ($cfg.content)) }}
 
     {{ if ($pages) }}
         {{ range ($pages.GroupByDate "2006") }}
