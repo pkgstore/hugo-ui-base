@@ -1,3 +1,7 @@
+<div class="node-question border-start border-danger-subtle border-3 ps-3 mb-3">
+    {{ (.Content) }}
+</div>
+
 {{ with (.Resources.Match "answer_*.md") }}
     {{ range . }}
       <div class="node-answer border-start border-success-subtle border-3 ps-3">

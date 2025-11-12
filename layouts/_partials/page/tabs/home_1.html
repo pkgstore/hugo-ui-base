@@ -22,7 +22,7 @@
           )) }}
       {{ end }}
       {{ (partial "page/toc" .) }}
-      {{ (.Content) }}
+      {{ (.Render "content") }}
       {{ (partial "page/sources" .) }}
   </div>
 </div>

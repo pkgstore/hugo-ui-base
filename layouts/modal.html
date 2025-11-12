@@ -1,16 +1,18 @@
-<div class="modal fade" id="modal-{{ (.File.UniqueID) }}" tabindex="-1"
-     aria-labelledby="modal-{{ (.File.UniqueID) }}-label" aria-hidden="true">
+{{ $id := (.File.UniqueID) }}
+
+<div class="modal fade" id="modal-{{ ($id) }}" tabindex="-1"
+     aria-labelledby="modal-{{ ($id) }}-label" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
     <div class="modal-content shadow">
       <div class="modal-header">
-        <h2 class="modal-title fs-5 text-truncate" id="modal-{{ (.File.UniqueID) }}-label">
+        <h2 class="modal-title fs-5 text-truncate" id="modal-{{ ($id) }}-label">
           <a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a>
         </h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label='{{ (i18n "close") }}'></button>
       </div>
       <div class="modal-body">
         <div class="node-body">
-            {{ (.Content) }}
+            {{ (.Render "content") }}
         </div>
       </div>
       <div class="modal-footer">

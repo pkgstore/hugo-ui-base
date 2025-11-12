@@ -9,11 +9,7 @@
 
 title: '{{ ($title) }}'
 description: ''
-icon: 'far fa-file-lines'
-categories:
-  - 'cat_01'
-  - 'cat_02'
-  - 'cat_03'
+icon: 'fas fa-terminal'
 tags:
   - 'tag_01'
   - 'tag_02'
@@ -23,10 +19,6 @@ authors:
   - 'JaneDoe'
 sources:
   - ''
-license: 'CC-BY-SA-4.0'
-complexity: '0'
-toc: 1
-comments: 1
 
 # -------------------------------------------------------------------------------------------------------------------- #
 # DATE
@@ -40,7 +32,7 @@ lastMod: '{{ ($date) }}'
 # META
 # -------------------------------------------------------------------------------------------------------------------- #
 
-type: 'articles'
+type: 'commands'
 hash: '{{ ($hash) }}'
 uuid: '{{ ($uuid) }}'
 slug: '{{ ($uuid) }}'

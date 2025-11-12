@@ -3,7 +3,6 @@
 # -------------------------------------------------------------------------------------------------------------------- #
 
 about: { other: 'About' }
-answer_count: { one: '{{ . }} answer', few: '{{ . }} answers', many: '{{ . }} answers', other: '{{ . }} answers' }
 archive: { other: 'Archive' }
 articles: { other: 'Articles' }
 authors: { other: 'Authors' }
