@@ -20,8 +20,8 @@ This shortcode creates a block of code with syntax highlighting.
 
 {{ if (or ($attr.title) ($attr.file)) }}
 
-  <div class="shortcode mb-3 shortcode-codeblock
-  shortcode-codeblock-{{ ($ordinal) }} shortcode-codeblock-{{ ($type) }}">
+  <div class="shortcode shortcode-codeblock
+  shortcode-codeblock-{{ ($ordinal) }} shortcode-codeblock-{{ ($type) }} mb-3">
     <div class="card overflow-hidden" data-bs-theme="dark">
       <div class="card-header">
         <div class="d-flex align-items-center">

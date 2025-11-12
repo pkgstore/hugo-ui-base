@@ -1,11 +1,13 @@
-<div class="node-question border-start border-danger-subtle border-3 ps-3 mb-3">
+<div class="node-question border-start border-danger-subtle border-3 ps-3">
     {{ (.Content) }}
 </div>
 
-{{ with (.Resources.Match "answer_*.md") }}
+{{ with (.Resources.Match "[0-9][0-9].md") }}
     {{ range . }}
-      <div class="node-answer border-start border-success-subtle border-3 ps-3">
-          {{ (.Content) }}
-      </div>
+        {{ if ((.Content) | len) }}
+          <div class="node-answer border-start border-success-subtle border-3 ps-3 mt-3">
+              {{ (.Content) }}
+          </div>
+        {{ end }}
     {{ end }}
 {{ end }}

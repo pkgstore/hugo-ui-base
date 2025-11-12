@@ -36,10 +36,10 @@ This shortcode allows you to create a simulation of an OS terminal window.
 
 {{ $cp := ((printf "clipboard-%s-%d" (delimit (shuffle (seq 11 99)) "") ($ordinal)) | md5) }}
 
-<div class="shortcode mb-3 shortcode-codeblock
+<div class="shortcode shortcode-codeblock
 shortcode-codeblock-{{ ($ordinal) }} shortcode-codeblock-{{ ($type) }}
 {{ with ($os) }}shortcode-codeblock-{{ ($type) }}-{{ . }}{{ end }}
-{{ with ($os) }}shortcode-codeblock-{{ ($type) }}-{{ . }}{{ end }}{{ with ($mode) }}-{{ . }}{{ end }}">
+{{ with ($os) }}shortcode-codeblock-{{ ($type) }}-{{ . }}{{ end }}{{ with ($mode) }}-{{ . }}{{ end }} mb-3">
   <div class="card overflow-hidden" data-bs-theme="dark">
     <div class="card-header">
       <div class="d-flex align-items-center">
