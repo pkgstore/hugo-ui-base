@@ -3,7 +3,13 @@
     {{ $section := (.Section) }}
     {{ $cfg := (index (site.Params.section) ($section)) }}
 
-    <div class="row row-cols-1 row-cols-xl-{{ (($cfg.grid.cols) | default 2) }} g-3">
+    <div class="row row-cols-1
+    row-cols-sm-{{ (($cfg.grid.cols.sm) | default 1) }}
+    row-cols-md-{{ (($cfg.grid.cols.md) | default 1) }}
+    row-cols-lg-{{ (($cfg.grid.cols.lg) | default 1) }}
+    row-cols-xl-{{ (($cfg.grid.cols.xl) | default 2) }}
+    row-cols-xxl-{{ (($cfg.grid.cols.xxl) | default 2) }}
+    g-3">
         {{ range $k, $v := (.Data.Terms.Alphabetical) }}
             {{ with (site.GetPage (printf "/%s/%s" ($section) (.Name))) }}
               <div class="col">
