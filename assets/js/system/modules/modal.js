@@ -7,9 +7,9 @@ const $modal = ($selector) => {
   const $len = $el.length;
 
   for (let $i = 0; $i < $len; ++$i) {
-    const $modalID = '#' + $el[$i].id;
-    if (window.location.href.indexOf($modalID) !== -1) {
-      const $bsModal = new bootstrap.Modal($modalID);
+    const $modalId = '#' + $el[$i].id;
+    if (window.location.href.indexOf($modalId) !== -1) {
+      const $bsModal = new bootstrap.Modal($modalId);
       $bsModal.show();
     }
   }

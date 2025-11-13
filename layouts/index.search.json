@@ -15,6 +15,7 @@
 
         {{ ($data.Add "pages" (dict
         "title" (.Title)
+        "icon" (.Params.icon)
         "tags" ($tags.Get "tags")
         "categories" ($categories.Get "categories")
         "section" (.Section)

@@ -5,9 +5,9 @@ export const $init = () => {
 const $active = ($selector, $button) => {
   if (!document.querySelector($selector)) return 0;
 
-  const $elID = document.querySelector($selector).getAttribute('id');
+  const $elId = document.querySelector($selector).getAttribute('id');
   const $elTabs = document.querySelectorAll($selector + ' ' + $button);
-  const $storageItem = $elID + '-active';
+  const $storageItem = 'node.' + $elId;
 
   $elTabs.forEach(($i) => {
     $_eventActive($i, $storageItem);

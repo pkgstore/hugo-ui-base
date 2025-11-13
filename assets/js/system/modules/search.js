@@ -33,26 +33,12 @@ const $search = async ($path) => {
 
         // Build our html if result exists.
         let $resultSet = ''; // Our results bucket.
-        let $url, $title, $section, $icon;
+        let $url, $title, $icon = 'far fa-file-lines';
 
         for (let $i = 0; $i < $len; ++$i) {
           $url = $results[$i].item.url;
           $title = $results[$i].item.title;
-          $section = $results[$i].item.section;
-
-          switch ($section) {
-            case 'articles':
-              $icon = 'fas fa-file-lines';
-              break;
-            case 'faq':
-              $icon = 'fas fa-circle-question';
-              break;
-            case 'resources':
-              $icon = 'fas fa-cube';
-              break;
-            default:
-              $icon = '';
-          }
+          $icon = $results[$i].item.icon;
 
           $resultSet += `<a class="list-group-item list-group-item-action" href="${$url}" tabindex="0">
             <span class="d-flex">
