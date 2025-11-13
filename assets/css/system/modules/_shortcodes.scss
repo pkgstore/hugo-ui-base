@@ -86,46 +86,18 @@ body {
             }
 
             &-linux {
-              pre {
-                > code {
-                  .line:first-child:before {
-                    content: 'user@host ~ % ';
-                    color: var(--bs-primary);
-                  }
-                }
-              }
+              @include terminal(--bs-primary, 'user@host ~ % ');
 
               &-root {
-                pre {
-                  > code {
-                    .line:first-child:before {
-                      content: 'root@host ~ # ';
-                      color: var(--bs-danger);
-                    }
-                  }
-                }
+                @include terminal(--bs-danger, 'root@host ~ # ');
               }
             }
 
             &-windows {
-              pre {
-                > code {
-                  .line:first-child:before {
-                    content: 'C:\\User> ';
-                    color: var(--bs-primary);
-                  }
-                }
-              }
+              @include terminal(--bs-primary, 'C:\\User> ');
 
               &-root {
-                pre {
-                  > code {
-                    .line:first-child:before {
-                      content: 'C:\\Admin> ';
-                      color: var(--bs-danger);
-                    }
-                  }
-                }
+                @include terminal(--bs-danger, 'C:\\Admin> ');
               }
             }
           }
@@ -167,19 +139,6 @@ body {
 
             &-body {
               //max-height: calc(100vh - 10rem);
-            }
-          }
-        }
-
-        // ---------------------------------------------------------------------------------------------------------- //
-        // GitHub Repository.
-        // ---------------------------------------------------------------------------------------------------------- //
-
-        &-gh-repo {
-          .gh-repo {
-            &-emoji {
-              width: 1rem;
-              height: 1rem;
             }
           }
         }

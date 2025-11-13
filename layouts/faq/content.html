@@ -1,8 +1,10 @@
+{{ $cfg := (index (site.Params.section) (.Section)) }}
+
 <div class="node-question border-start border-danger-subtle border-3 ps-3">
     {{ (.Content) }}
 </div>
 
-{{ with (.Resources.Match "[0-9][0-9].md") }}
+{{ with (.Resources.Match ($cfg.file)) }}
     {{ range . }}
         {{ if ((.Content) | len) }}
           <div class="node-answer border-start border-success-subtle border-3 ps-3 mt-3">

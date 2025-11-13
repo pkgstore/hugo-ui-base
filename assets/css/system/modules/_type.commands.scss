@@ -1,0 +1,19 @@
+.type {
+  &-commands {
+    .file {
+      &-command {
+        &-bash {
+          @include terminal(--bs-light, '~ $ ');
+        }
+
+        &-bat, &-cmd {
+          @include terminal(--bs-light, 'C:\\> ');
+        }
+
+        &-ps1 {
+          @include terminal(--bs-light, 'PS > ');
+        }
+      }
+    }
+  }
+}

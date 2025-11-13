@@ -17,3 +17,14 @@
 @mixin font-brand() {
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+@mixin terminal($color, $content) {
+  pre {
+    > code {
+      .line:first-child:before {
+        color: var($color);
+        content: $content;
+      }
+    }
+  }
+}
