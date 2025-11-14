@@ -33,7 +33,7 @@ const $search = async ($path) => {
 
         // Build our html if result exists.
         let $resultSet = ''; // Our results bucket.
-        let $url, $title, $icon = 'far fa-file';
+        let $url = '', $title = '', $icon = 'far fa-file';
 
         for (let $i = 0; $i < $len; ++$i) {
           $url = $results[$i].item.url;
