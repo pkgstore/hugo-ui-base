@@ -210,7 +210,6 @@ a {
       @each $site, $prop in $sites {
         &[href*='#{$site}'] {
           color: hsl(0, 0%, 100%);
-          color: map-get($prop, 'color');
           border-color: map-get($prop, 'background');
           background-color: map-get($prop, 'background');
         }
