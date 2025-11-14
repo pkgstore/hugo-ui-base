@@ -17,7 +17,6 @@
 
     .lnt {
       -webkit-user-select: none;
-      justify-content: end;
       padding: 0 1rem;
       user-select: none;
     }
@@ -38,6 +37,10 @@
             border-right: 1px solid var(--bs-dark-border-subtle);
             padding: 0;
             width: 5rem;
+
+            span {
+              justify-content: end;
+            }
           }
 
           &:last-child {
