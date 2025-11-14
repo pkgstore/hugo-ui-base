@@ -5,6 +5,7 @@
     {{ range . }}{{ $bundle = (($bundle) | append (resources.Get .)) }}{{ end }}
     {{ $bundle = (($bundle) | resources.Concat "css/vendor.bundle.css") }}
     {{ $bundle = ((($bundle) | minify) | resources.Fingerprint) }}
+    <link rel="preload" href="{{ ($bundle.RelPermalink) }}" as="style">
     <link rel="stylesheet" href="{{ ($bundle.RelPermalink) }}" integrity="{{ ($bundle.Data.Integrity) }}"
           crossorigin="anonymous">
 {{ end }}
@@ -15,6 +16,7 @@
     {{ $bundle = (($bundle) | resources.Concat "css/system.bundle.scss") }}
     {{ $bundle = (($bundle) | resources.ExecuteAsTemplate ("css/system.bundle.scss" | relLangURL) .) }}
     {{ $bundle = (((($bundle) | toCSS) | minify) | resources.Fingerprint) }}
+    <link rel="preload" href="{{ ($bundle.RelPermalink) }}" as="style">
     <link rel="stylesheet" href="{{ ($bundle.RelPermalink) }}" integrity="{{ ($bundle.Data.Integrity) }}"
           crossorigin="anonymous">
 {{ end }}
