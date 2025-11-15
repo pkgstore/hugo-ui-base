@@ -3,8 +3,7 @@
 {{ with ($styles.vendor) }}
     {{ $bundle := slice }}
     {{ range . }}{{ $bundle = (($bundle) | append (resources.Get .)) }}{{ end }}
-    {{ $bundle = (($bundle) | resources.Concat "css/vendor.bundle.css") }}
-    {{ $bundle = ((($bundle) | minify) | resources.Fingerprint) }}
+    {{ $bundle = ((($bundle) | resources.Concat "css/vendor.bundle.css") | minify) }}
     <link rel="preload" href="{{ ($bundle.RelPermalink) }}" as="style">
     <link rel="stylesheet" href="{{ ($bundle.RelPermalink) }}">
 {{ end }}
@@ -14,7 +13,7 @@
     {{ range . }}{{ $bundle = (($bundle) | append (resources.Get .)) }}{{ end }}
     {{ $bundle = (($bundle) | resources.Concat "css/system.bundle.scss") }}
     {{ $bundle = (($bundle) | resources.ExecuteAsTemplate ("css/system.bundle.scss" | relLangURL) .) }}
-    {{ $bundle = (((($bundle) | toCSS) | minify) | resources.Fingerprint) }}
+    {{ $bundle = ((($bundle) | toCSS) | minify) }}
     <link rel="preload" href="{{ ($bundle.RelPermalink) }}" as="style">
     <link rel="stylesheet" href="{{ ($bundle.RelPermalink) }}">
 {{ end }}
