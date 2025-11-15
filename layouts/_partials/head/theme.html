@@ -1,6 +1,6 @@
-{{ $uiTheme := (((resources.Get "js/theme.js") | minify) | resources.Fingerprint) }}
-<script src="{{ ($uiTheme.RelPermalink) }}" integrity="{{ ($uiTheme.Data.Integrity) }}"
-        crossorigin="anonymous"></script>
+{{ $uiTheme := ((resources.Get "js/theme.js") | minify) }}
+<link rel="preload" href="{{ ($uiTheme.RelPermalink) }}" as="script">
+<script src="{{ ($uiTheme.RelPermalink) }}"></script>
 
 {{ $theme := (site.Params.ui.color.theme) }}
 {{ with ($theme.light) }}
