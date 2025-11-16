@@ -29,7 +29,6 @@ languages: { other: 'Languages' }
 license: { other: 'License' }
 license_header: { other: 'License header' }
 license_text: { other: 'License text' }
-local_path: { other: 'Local path' }
 logo: { other: 'Logotype' }
 meta: { other: 'Meta' }
 minutes: { other: 'min.' }
@@ -41,6 +40,8 @@ search_internal: { other: 'Internal search' }
 search_yandex: { other: 'Yandex Search' }
 see_also: { other: 'See also' }
 share: { other: 'Share' }
+share_path: { other: 'Local path' }
+share_url: { other: 'URL' }
 site_resize: { other: 'Resize site' }
 size: { other: 'Size' }
 social_networks: { other: 'Social networks' }
@@ -53,7 +54,6 @@ terminal: { other: 'Terminal' }
 toc: { other: 'Contents' }
 toggle_navigation: { other: 'Toggle navigation' }
 type: { other: 'Type' }
-url: { other: 'URL' }
 uuid: { other: 'UUID' }
 word_count: { other: 'Word count' }
 

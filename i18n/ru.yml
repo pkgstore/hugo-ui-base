@@ -29,7 +29,6 @@ languages: { other: 'Языки' }
 license: { other: 'Лицензия' }
 license_header: { other: 'Заголовок лицензии' }
 license_text: { other: 'Текст лицензии' }
-local_path: { other: 'Локальный путь' }
 logo: { other: 'Логотип' }
 meta: { other: 'Мета' }
 minutes: { other: 'мин.' }
@@ -41,6 +40,8 @@ search_internal: { other: 'Внутренний поиск' }
 search_yandex: { other: 'Поиск Яндекс' }
 see_also: { other: 'Смотрите также' }
 share: { other: 'Поделиться' }
+share_path: { other: 'Локальный путь' }
+share_url: { other: 'URL' }
 site_resize: { other: 'Изменить размер сайта' }
 size: { other: 'Размер' }
 social_networks: { other: 'Социальный сети' }
@@ -53,7 +54,6 @@ terminal: { other: 'Терминал' }
 toc: { other: 'Содержание' }
 toggle_navigation: { other: 'Переключить навигацию' }
 type: { other: 'Тип' }
-url: { other: 'URL' }
 uuid: { other: 'UUID' }
 word_count: { other: 'Количество слов' }
 
