@@ -29,6 +29,7 @@ languages: { other: 'Языки' }
 license: { other: 'Лицензия' }
 license_header: { other: 'Заголовок лицензии' }
 license_text: { other: 'Текст лицензии' }
+local_path: { other: 'Локальный путь' }
 logo: { other: 'Логотип' }
 meta: { other: 'Мета' }
 minutes: { other: 'мин.' }
@@ -52,6 +53,7 @@ terminal: { other: 'Терминал' }
 toc: { other: 'Содержание' }
 toggle_navigation: { other: 'Переключить навигацию' }
 type: { other: 'Тип' }
+url: { other: 'URL' }
 uuid: { other: 'UUID' }
 word_count: { other: 'Количество слов' }
 

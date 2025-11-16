@@ -4,39 +4,53 @@
     <div class="row row-cols-1 row-cols-sm-2 g-2 align-items-center">
         {{ with (.Params.license) }}
             {{ $id := (printf "modal-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
-            <div class="col">{{ (i18n "license") }}</div>
+            <div class="col">
+              <label for="node-meta-license">{{ (i18n "license") }}</label>
+            </div>
             <div class="col">
               <div class="input-group">
-                <input type="text" class="form-control" value="{{ . }}" readonly>
+                <input type="text" id="node-meta-license" class="form-control" name="node-meta-license"
+                       value="{{ . }}" readonly>
                 <a class="btn btn-primary" href="https://choosealicense.com/licenses/{{ . | lower }}" target="_blank"
-                   role="button" rel="noopener noreferrer nofollow"
-                   title="{{ (i18n "license_text") }}">
+                   role="button" rel="noopener noreferrer nofollow" title="{{ (i18n "license_text") }}">
                   <i class="far fa-file-lines fa-fw"></i></a>
               </div>
             </div>
         {{ end }}
         {{ with (.File) }}
-          <div class="col">{{ (i18n "file_id") }}</div>
           <div class="col">
-            <input type="text" class="form-control" value="{{ (.UniqueID) }}" readonly>
+            <label for="node-meta-file-id">{{ (i18n "file_id") }}</label>
+          </div>
+          <div class="col">
+            <input type="text" id="node-meta-file-id" class="form-control" name="node-meta-file-id"
+                   value="{{ (.UniqueID) }}" readonly>
           </div>
         {{ end }}
         {{ with (.Params.uuid) }}
-          <div class="col">{{ (i18n "uuid") }}</div>
           <div class="col">
-            <input type="text" class="form-control" value="{{ . }}" readonly>
+            <label for="node-meta-uuid">{{ (i18n "uuid") }}</label>
+          </div>
+          <div class="col">
+            <input type="text" id="node-meta-uuid" class="form-control" name="node-meta-uuid"
+                   value="{{ . }}" readonly>
           </div>
         {{ end }}
         {{ with (.File) }}
-          <div class="col">{{ (i18n "sys_path") }}</div>
           <div class="col">
-            <input type="text" class="form-control" value="{{ (.Path) }}" readonly>
+            <label for="node-meta-file-path">{{ (i18n "sys_path") }}</label>
+          </div>
+          <div class="col">
+            <input type="text" id="node-meta-file-path" class="form-control" name="node-meta-file-path"
+                   value="{{ (.Path) }}" readonly>
           </div>
         {{ end }}
         {{ with (.Type) }}
-          <div class="col">{{ (i18n "type") }}</div>
           <div class="col">
-            <input type="text" class="form-control" value="{{ . }}" readonly>
+            <label for="node-meta-type">{{ (i18n "type") }}</label>
+          </div>
+          <div class="col">
+            <input type="text" id="node-meta-type" class="form-control" name="node-meta-type"
+                   value="{{ . }}" readonly>
           </div>
         {{ end }}
     </div>

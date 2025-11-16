@@ -158,18 +158,22 @@
             {{ end }}
             {{ if ($cfg.url.enabled) }}
               <div class="col">
+                <label class="form-label" for="node-share-url">{{ (i18n "url") }}</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="fas fa-link fa-fw"></i></span>
-                  <input type="text" class="form-control" value="{{ ($url) }}" data-fn="select-all" readonly>
+                  <input type="text" id="node-share-url" class="form-control" name="node-share-url"
+                         value="{{ ($url) }}" data-fn="select-all" readonly>
                 </div>
               </div>
             {{ end }}
             {{ if ($cfg.file.enabled) }}
               <div class="col">
                   {{ with (.File) }}
+                    <label class="form-label" for="node-share-path">{{ (i18n "local_path") }}</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fas fa-file fa-fw"></i></span>
-                      <input type="text" class="form-control" value="{{ (.Path) }}" data-fn="select-all" readonly>
+                      <input type="text" id="node-share-path" class="form-control" name="node-share-path"
+                             value="{{ (.Path) }}" data-fn="select-all" readonly>
                     </div>
                   {{ end }}
               </div>
