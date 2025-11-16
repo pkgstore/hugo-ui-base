@@ -16,7 +16,6 @@
     )) }}
 {{ end }}
 {{ ($data.Add "icons" (dict "src" ("favicon.ico" | absURL) "sizes" "any" "type" "image/x-icon" "purpose" "any" )) }}
-{{ ($data.Add "icons" (dict "src" ("favicon.svg" | absURL) "sizes" "any" "type" "image/svg+xml" "purpose" "any" )) }}
 
 {{ $maskable := (slice "48" "72" "96" "128" "192" "384" "512") }}
 {{ range ($maskable) }}
