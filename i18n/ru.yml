@@ -6,6 +6,7 @@ about: { other: 'О проекте' }
 archive: { other: 'Архив' }
 articles: { other: 'Статьи' }
 authors: { other: 'Авторы' }
+breadcrumb: { other: 'Хлебные крошки' }
 categories: { other: 'Категории' }
 changelog: { other: 'Журнал изменений' }
 close: { other: 'Закрыть' }

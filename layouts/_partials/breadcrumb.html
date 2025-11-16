@@ -2,7 +2,7 @@
 {{ $divider := (($cfg.divider) | default "/") }}
 {{ $iconHome := (($cfg.icon.name) | default "fas fa-home") }}
 
-<nav style="--bs-breadcrumb-divider:'{{ ($divider) }}';" class="small" aria-label="breadcrumb">
+<nav style="--bs-breadcrumb-divider:'{{ ($divider) }}';" class="small" aria-label="{{ (i18n "breadcrumb") }}">
   <ol class="breadcrumb p-2 rounded bg-body-tertiary">
       {{ range (.Ancestors.Reverse) }}
         <li class="breadcrumb-item">

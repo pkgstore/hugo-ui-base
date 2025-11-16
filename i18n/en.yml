@@ -6,6 +6,7 @@ about: { other: 'About' }
 archive: { other: 'Archive' }
 articles: { other: 'Articles' }
 authors: { other: 'Authors' }
+breadcrumb: { other: 'Breadcrumb' }
 categories: { other: 'Categories' }
 changelog: { other: 'Changelog' }
 close: { other: 'Close' }
