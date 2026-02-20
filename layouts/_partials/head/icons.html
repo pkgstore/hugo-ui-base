@@ -1,4 +1,4 @@
-{{ $sizes := (site.Data.ui.icons.sizes) }}
+{{ $sizes := (hugo.Data.ui.icons.sizes) }}
 
 {{ range ($sizes) }}
   <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}"

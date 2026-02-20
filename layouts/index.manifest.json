@@ -1,5 +1,5 @@
 {{ $cfg := (site.Params.manifest) }}
-{{ $icons := (site.Data.ui.icons) }}
+{{ $icons := (hugo.Data.ui.icons) }}
 {{ $lang := (site.Language.Lang) }}
 {{ $data := (newScratch) }}
 

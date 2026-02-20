@@ -1,4 +1,4 @@
-{{ $preConnect := (site.Data.ui.network.pre_connect) }}
+{{ $preConnect := (hugo.Data.ui.network.pre_connect) }}
 {{ range ($preConnect) }}
   <link rel="preconnect" href="{{ . }}" crossorigin="anonymous">
 {{ end }}

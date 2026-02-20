@@ -1,4 +1,4 @@
-{{ $scripts := (site.Data.ui.scripts) }}
+{{ $scripts := (hugo.Data.ui.scripts) }}
 
 {{ with ($scripts.vendor) }}
     {{ $bundle := slice }}

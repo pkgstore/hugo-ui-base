@@ -1,4 +1,4 @@
-{{ $styles := (site.Data.ui.styles) }}
+{{ $styles := (hugo.Data.ui.styles) }}
 
 {{ with ($styles.vendor) }}
     {{ $bundle := slice }}
