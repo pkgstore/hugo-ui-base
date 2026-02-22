@@ -13,3 +13,20 @@
     z-index: var(--fancybox-zIndex, 2050);
   }
 }
+
+.btn {
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+
+    > .icon {
+      &:first-child:not(:last-child) {
+        margin-right: .5rem;
+      }
+
+      &:last-child:not(:first-child) {
+        margin-left: .5rem;
+      }
+    }
+  }
+}

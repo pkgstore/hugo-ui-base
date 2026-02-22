@@ -1,6 +1,6 @@
-<section class="card node-categories h-100">
+<div class="card node-categories h-100">
   <div class="card-body">
-    <h5 class="card-title">{{ (i18n "categories") }}</h5>
+    <div class="card-title h5 fs-5">{{ (i18n "categories") }}</div>
       {{ if (.Params.categories) }}
         <ul class="list-inline">
             {{ range (.GetTerms "categories") }}
@@ -17,4 +17,4 @@
           )) }}
       {{ end }}
   </div>
-</section>
+</div>

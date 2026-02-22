@@ -1,6 +1,6 @@
-<section class="card node-meta h-100">
+<div class="card node-meta h-100">
   <div class="card-body">
-    <h5 class="card-title">{{ (i18n "meta") }}</h5>
+    <div class="card-title h5 fs-5">{{ (i18n "meta") }}</div>
     <div class="row row-cols-1 row-cols-sm-2 g-2 align-items-center">
         {{ with (.Params.license) }}
             {{ $id := (printf "modal-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
@@ -45,4 +45,4 @@
         {{ end }}
     </div>
   </div>
-</section>
+</div>

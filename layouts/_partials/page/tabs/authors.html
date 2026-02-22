@@ -1,6 +1,6 @@
-<section class="card node-authors h-100">
+<div class="card node-authors h-100">
   <div class="card-body">
-    <h5 class="card-title">{{ (i18n "authors") }}</h5>
+    <div class="card-title h5 fs-5">{{ (i18n "authors") }}</div>
       {{ if (.Params.authors) }}
         <ul>
             {{ range (.GetTerms "authors") }}
@@ -17,4 +17,4 @@
           )) }}
       {{ end }}
   </div>
-</section>
+</div>

@@ -1,6 +1,6 @@
-<section class="card node-stats h-100">
+<div class="card node-stats h-100">
   <div class="card-body">
-    <h5 class="card-title">{{ (i18n "stats") }}</h5>
+    <div class="card-title h5 fs-5">{{ (i18n "stats") }}</div>
     <div class="row row-cols-1 row-cols-sm-2 g-2 align-items-center">
         {{ with (.WordCount) }}
           <div class="col">{{ (i18n "word_count") }}</div>
@@ -21,4 +21,4 @@
         {{ end }}
     </div>
   </div>
-</section>
+</div>

@@ -1,10 +1,11 @@
 {{ $cfg := (site.Params.search) }}
 
-<div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-search" tabindex="-1" role="dialog"
+     aria-labelledby="modal-search-label" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="searchModalLabel">{{ (i18n "search") }}</h5>
+        <div class="modal-title h2 fs-5" id="modal-search-label">{{ (i18n "search") }}</div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ (i18n "close") }}"></button>
       </div>
       <div class="modal-body node-body">
