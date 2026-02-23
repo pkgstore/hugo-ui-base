@@ -3,17 +3,16 @@
     <div class="card-title h5 fs-5">{{ (i18n "meta") }}</div>
     <div class="row row-cols-1 row-cols-sm-2 g-2 align-items-center">
         {{ with (.Params.license) }}
-            {{ $id := (printf "modal-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
-            <div class="col">{{ (i18n "license") }}</div>
-            <div class="col">
-              <div class="input-group">
-                <input type="text" id="node-meta-license" class="form-control" name="node-meta-license"
-                       value="{{ . }}" aria-label="{{ (i18n "license") }}" readonly>
-                <a class="btn btn-primary" href="https://choosealicense.com/licenses/{{ . | lower }}" target="_blank"
-                   role="button" rel="noopener noreferrer nofollow" title="{{ (i18n "license_text") }}">
-                  <i class="far fa-file-lines fa-fw"></i></a>
-              </div>
+          <div class="col">{{ (i18n "license") }}</div>
+          <div class="col">
+            <div class="input-group">
+              <input type="text" id="node-meta-license" class="form-control" name="node-meta-license"
+                     value="{{ . }}" aria-label="{{ (i18n "license") }}" readonly>
+              <a class="btn btn-primary" href="https://choosealicense.com/licenses/{{ . | lower }}" target="_blank"
+                 role="button" rel="noopener noreferrer nofollow" title="{{ (i18n "license_text") }}">
+                <i class="far fa-file-lines fa-fw"></i></a>
             </div>
+          </div>
         {{ end }}
         {{ with (.File) }}
           <div class="col">{{ (i18n "file_id") }}</div>

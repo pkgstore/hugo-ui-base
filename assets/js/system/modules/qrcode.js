@@ -13,7 +13,7 @@ const $generator = ($selector) => {
   }
 };
 
-const $_qrcode = ($selector, $text, $size = 128) => {
+const $_qrcode = ($selector, $text, $size = 256) => {
   let $options;
 
   $options = {
