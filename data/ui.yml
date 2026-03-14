@@ -45,5 +45,7 @@ scripts:
     - 'js/vendor/fancybox.min.js'
     # https://cdn.jsdelivr.net/npm/easyqrcodejs@4/dist/easy.qrcode.min.js
     - 'js/vendor/qrcode.min.js'
+    # https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js
+    - 'js/vendor/masonry.min.js'
   system:
     - 'js/system.js'
