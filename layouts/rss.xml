@@ -28,7 +28,7 @@
       {{ end }}
     <description>{{ ($description) }}</description>
     <link>{{ (.Permalink) }}</link>
-      {{ with (site.LanguageCode) }}
+      {{ with (site.Language.Locale) }}
         <language>{{ . }}</language>
       {{ end }}
       {{ with (.OutputFormats.Get "RSS") }}

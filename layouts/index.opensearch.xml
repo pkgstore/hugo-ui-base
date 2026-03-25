@@ -13,7 +13,7 @@
   <Attribution>{{ (site.Title) }} © {{ (now.UTC.Format "2006") }}</Attribution>
   <SyndicationRight>open</SyndicationRight>
   <AdultContent>false</AdultContent>
-  <Language>{{ (site.LanguageCode) }}</Language>
+  <Language>{{ (site.Language.Locale) }}</Language>
   <OutputEncoding>UTF-8</OutputEncoding>
   <InputEncoding>UTF-8</InputEncoding>
   <moz:SearchForm>https://google.com/search?as_sitesearch={{ ((urls.Parse (site.BaseURL)).Host) }}&amp;q={searchTerms}</moz:SearchForm>

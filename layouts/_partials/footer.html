@@ -84,7 +84,7 @@
                     {{ range . }}
                       <li>
                         <a class="dropdown-item" href="{{ (.RelPermalink) }}" hreflang="{{ (.Language.Lang) }}">
-                            {{ (.Language.LanguageName) }}
+                            {{ (.Language.Label) }}
                         </a>
                       </li>
                     {{ end }}

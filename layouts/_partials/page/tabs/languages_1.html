@@ -10,7 +10,7 @@
       <tbody>
       {{ range (.Translations) }}
         <tr>
-          <td>{{ (.Language.LanguageName) }}</td>
+          <td>{{ (.Language.Label) }}</td>
           <td><a href="{{ (.RelPermalink) }}">{{ (.Title) }}</a></td>
         </tr>
       {{ end }}

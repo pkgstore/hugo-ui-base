@@ -4,16 +4,16 @@
 {{ ($data.Add "language" (slice)) }}
 {{ ($data.Add "language" (dict
 "@type" "Language"
-"name" (.Language.LanguageName)
-"alternateName" (.Language.LanguageCode)
+"name" (.Language.Label)
+"alternateName" (.Language.Locale)
 )) }}
 
 {{ if (.IsTranslated) }}
     {{ range (.Translations) }}
         {{ ($data.Add "language" (dict
         "@type" "Language"
-        "name" (.Language.LanguageName)
-        "alternateName" (.Language.LanguageCode)
+        "name" (.Language.Label)
+        "alternateName" (.Language.Locale)
         )) }}
     {{ end }}
 {{ end }}
